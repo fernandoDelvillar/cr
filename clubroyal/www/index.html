@@ -21,22 +21,80 @@
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
+        <link rel="shortcut icon" href="favicon.ico">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <link rel="stylesheet" type="text/css" href="css/royal.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.custom.structure.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.custom.theme.min.css" />
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+        <link rel="apple-touch-icon" href="img/launch_icon_57.png" />
+
+        <link rel="apple-touch-icon" sizes="72x72" href="img/launch_icon_72.png" />
+
+        <link rel="apple-touch-icon" sizes="114x114" href="ing/launch_icon_114.png" />
+        <title>Club Royal</title>
     </head>
     <body>
         <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+            <section data-role="page" data-title="login" data-theme="b" id="login">
+
+                <header data-role="header" style="background:none;border: none;" >
+                    <center>  <a href="index.html" id="refresh" data-ajax="false" data-icon="refresh" >
+                            <img id="logo" src="img/logo.png">
+                        </a></center>
+                </header>
+
+                <section data-role="content" class="content" style="margin-bottom:2em;margin-top:2em;">
+                    <br>  
+                    <form action="" name="login">
+                        <center>
+                            <div data-role="fieldcontain">
+                                <label for="username" style="width: 90px;
+                                       margin-right: 1.5em;">
+                                    Usuario
+                                </label>
+                                <input name="userID" id="userID" placeholder=" " value="" type="text" data-mini="true" />
+                            </div>
+
+                            <div data-role="fieldcontain">
+                                <label for="password">
+                                    Contraseña
+                                </label>
+                                <input name="pass" id="pass" placeholder=" " value="" type="password" data-mini="true" />
+                            </div>
+
+
+                            <!--p><a href="#home" data-transition="pop">Next</a></p>
+                            <p><a href="index2.html">Change Theme</a></p buildIt() logIn()-->
+                            <input  data-transition="slide" type="submit" onclick="buildIt()
+                                logIn()" data-inline="true" data-theme="a" value="Entrar" />
+                        </center>
+                    </form>
+                    <br>
+                    <br>
+
+
+                </section>
+
+
+                <footer data-role="footer" data-position="fixed">
+                    <div id="fot">
+                        <img id="logofot1" src="img/adventa.png">     <img id="logofot2" src="img/adbox.png">   
+                        <p>D.R.<abbr lang="en" title="Copyright"> �</abbr>Copyright 2013.  Derechos Reservados.  Adventa y Adbox son marcas registradas de Publigraphics S.A. de C.V. 
+                            Quedan reservados todos los derechos de edici�n,  copia o reproducci�n parcial o total.
+                            T�rminos y condiciones de uso.  Aviso de Privacidad.</p></div>
+
+
+                </footer>
+
+            </section>
         </div>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
-            app.initialize();
+                            app.initialize();
         </script>
     </body>
 </html>
