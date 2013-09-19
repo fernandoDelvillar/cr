@@ -23,90 +23,61 @@
         <meta name="format-detection" content="telephone=no" />
         <link rel="shortcut icon" href="favicon.ico">
         <meta name="viewport" content="user-scalable=yes, initial-scale=1, maximum-scale=4, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <link rel="stylesheet" type="text/css" href="css/royal.css" />
-        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.custom.structure.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.custom.theme.min.css" />
-        <link rel="stylesheet"  href="css/themes/default/jquery.mobile-1.3.2.min.css">
-        <link rel="apple-touch-icon" href="img/launch_icon_57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="img/launch_icon_72.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="ing/launch_icon_114.png" />
+        <link href="css/jquery.mobile-1.3.2.min.css" rel="stylesheet"/>
+        <script src="js/cordoba.js"></script>
+        <script src="js/jquery-2.0.3.min.js"></script>
+        <script src="js/jquery.mobile-1.3.2.min.js"></script>
         <title>Club Royal</title>
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.3.2.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
+
     </head>
     <body>
-        <div data-role="page" id="inicio">
 
-            <div data-role="header">
-                <h1>Autenticacion de Usuario</h1>
-            </div>
+        <header data-role="header" data-theme="a" data-position="fixed">
+            <h1>Club Royal APP</h1> 
+        </header>
+        <section data-role="content" class="content" style="margin-bottom:2em;margin-top:2em;">
+            <br>  
+            <form action="" name="login">
+                <center>
+                    <div data-role="fieldcontain" data-position="relative">
+                        <label for="username" style="width: 90px;
+                               margin-right: 1.5em;">
+                            Usuario
+                        </label>
+                        <input name="userID" id="userID" placeholder=" " value="" type="text" data-mini="true" />
+                    </div>
 
-            <div data-role="content">	
-                <form id="formulario" >
-
-                    <label> Usuario </label>
-                    <input type="text" id="nombredeusuario" name="nombredeusuario">
-
-                    <label> Contraseña </label>
-                    <input type="password" id="clave" name="clave" >
-
-                    <input type="submit" value="Login" id="botonLogin">
-
-                </form>		
-            </div>
-
-        </div>
-
-        <div data-role="page" id="home">
-
-            <div data-role="header">
-                <h1>Bienvenido</h1>
-            </div>
-
-            <div data-role="content">	
-                <h2> Bienvenido a la aplicacion </h2>
-                <h3> Su usuario y password son válidos</h3>
-            </div>
-
-        </div>
-
-        <script>
-
-            $('#formulario').submit(function() {
+                    <div data-role="fieldcontain" data-position="relative">
+                        <label for="password">
+                            Contraseña
+                        </label>
+                        <input name="pass" id="pass" placeholder=" " value="" type="password" data-mini="true" />
+                    </div>
 
 
-                // recolecta los valores que inserto el usuario
-                var datosUsuario = $("#nombredeusuario").val()
-                var datosPassword = $("#clave").val()
+                    <!--p><a href="#home" data-transition="pop">Next</a></p>
+                    <p><a href="index2.html">Change Theme</a></p buildIt() logIn()-->
+                    <input  data-transition="slide" type="submit" onclick="" data-inline="true" data-theme="a" value="Entrar" />
+                </center>
+            </form>
+            <br>
+            <br>
 
-                archivoValidacion = "http://revolucion.mobi/ejemplos/phonegap/envioFormulario/validacion_de_datos.php?jsoncallback=?"
 
-                $.getJSON(archivoValidacion, {usuario: datosUsuario, password: datosPassword})
-                        .done(function(respuestaServer) {
+        </section>
 
-                    alert(respuestaServer.mensaje + "\nGenerado en: " + respuestaServer.hora + "\n" + respuestaServer.generador)
+        <footer data-role="footer" data-theme="a" data-position="fixed">
+            <div id="fot">
+                <img id="logofot1" src="img/adventa.png">     <img id="logofot2" src="img/adbox.png">   
+                <p>D.R.<abbr lang="en" title="Copyright"> �</abbr>Copyright 2013.  Derechos Reservados.  Adventa y Adbox son marcas registradas de Publigraphics S.A. de C.V. 
+                    Quedan reservados todos los derechos de edici�n,  copia o reproducci�n parcial o total.
+                    T�rminos y condiciones de uso.  Aviso de Privacidad.</p></div>
 
-                    if (respuestaServer.validacion == "ok") {
 
-                        /// si la validacion es correcta, muestra la pantalla "home"
-                        $.mobile.changePage("#home")
-
-                    } else {
-
-                        /// ejecutar una conducta cuando la validacion falla
-                    }
-
-                })
-                return false;
-            })
-
-        </script>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        </footer>
         <script type="text/javascript">
-            app.initialize();
+                        app.initialize();
         </script>
+
     </body>
 </html>
