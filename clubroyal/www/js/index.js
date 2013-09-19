@@ -34,6 +34,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         alert("device Ready");
+        document.getElementById("userID").focus();
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
