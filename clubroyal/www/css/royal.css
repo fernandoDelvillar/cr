@@ -68,22 +68,22 @@ footer p{ font-size: 70%!important;
     background: url(../img/sprite_layout.png) no-repeat scroll -127px 1px / 925px 32px transparent;
     color: #FFFFFF;
     display: block;
-    float: right;
+    /*float: right;*/
     font-size: 13px;
     height: 22px;
-    margin: 4px 7px 0 0;
-    padding: 11px 0 0 11px;
+/*    margin: 4px 7px 0 0;
+    padding: 11px 0 0 11px;*/
     text-shadow: none;
     width: 22px;
 }
 .mini {
     color: darkmagenta;
     display: block;
-    float: right;
+    /*float: right;*/
     font-size: 19px;
     height: 22px;
-    margin: 4px 7px 0 0;
-    padding: 11px 0 0 1px;
+/*    margin: 4px 7px 0 0;
+    padding: 11px 0 0 1px;*/
     text-shadow: none;
     width: 22px;
 }
@@ -163,7 +163,7 @@ footer p{ font-size: 70%!important;
     .my-breakpoint .ui-block-d,
     .my-breakpoint .ui-block-e { 
         width: 100%!important; 
-        float:none; 
+        
     }
     .my-breakpoint .ui-block-a img, 
     .my-breakpoint .ui-block-b img, 
@@ -171,7 +171,7 @@ footer p{ font-size: 70%!important;
     .my-breakpoint .ui-block-d img,
     .my-breakpoint .ui-block-e img{ 
         width: 100%!important; 
-        float:none; 
+        
     }
 
 }
