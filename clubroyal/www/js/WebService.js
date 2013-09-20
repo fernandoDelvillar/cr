@@ -19,7 +19,7 @@ var canlogin = function() {
          alert(status);
         if (status === "success") {
             var response = $(req.responseXML).find("return").text();
-            alert(response);
+            $("#response").text(response);
             var json = jQuery.parseJSON(response);
             if (json.login) {
                 $("#response").text($.base64.encode("1234"));
