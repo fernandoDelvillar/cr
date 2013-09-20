@@ -15,6 +15,7 @@ var canlogin = function() {
     });
 
     function processSuccess(data, status, req) {
+        $("#response").text(data);
         if (status === "success") {
             var response = $(req.responseXML).find("return").text();
             alert(response);
