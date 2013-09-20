@@ -21,6 +21,8 @@ var canlogin = function() {
             if (json.login) {
                 $("#response").text($.base64.encode("1234"));
             }
+        }else{
+            alert(status);
         }
     }
 
