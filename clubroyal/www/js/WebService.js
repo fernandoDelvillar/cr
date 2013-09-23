@@ -15,11 +15,11 @@ var canlogin = function() {
     });
 
     function processSuccess(data, status, req) {
-        $("#response").text(data);
+        $("#response").text(req);
         alert(status);
         if (status === "success") {
-            console.log(data);
-            var response = $(data.responseXML).find("return").text();
+            console.log(req);
+            var response = $(req.responseXML).find("return").text();
             console.log(response);
             $("#response").text(response);
             alert(response);
