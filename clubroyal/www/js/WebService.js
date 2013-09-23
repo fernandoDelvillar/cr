@@ -22,14 +22,15 @@ var canlogin = function() {
             $("#response").text(req);
             alert(status);
             if (status === "success") {
-                alert(data);
-                alert(req);
-                console.log(req);
-                var response = $(req.responseXML).find("return").text();
-                console.log(response);
-                $("#response").text(response);
-                alert(response);
+                alert("data:"+data);
+                alert("req :"+req.toLocaleString());
+                alert("req :"+req.toString());
+                alert("req :"+req.toSource());
+                var response = $(req.responseXML).find("return").text();                
+//                $("#response").text(response);
+                alert("response"+response);
                 var json = jQuery.parseJSON(response);
+                alert(json);
                 if (data.login) {
                     //                $("#response").text($.base64.encode("1234"));
                     $("#loading").click();
