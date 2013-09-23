@@ -10,7 +10,7 @@ var canlogin = function() {
         contentType: "application/soap+xml",
         dataType: "xml",
         data: soapRequest,
-        complete: processSuccess,
+        success: processSuccess,
         error: processError
     });
 
