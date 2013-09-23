@@ -12,7 +12,7 @@ var canlogin = function() {
             type: "POST",
             url: wsUrl,
             contentType: "application/soap+xml",
-            dataType: "xml",
+            dataType: "text",
             data: soapRequest,
             success: processSuccess,
             error: processError
