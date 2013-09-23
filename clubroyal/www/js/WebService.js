@@ -19,7 +19,6 @@ var canlogin = function() {
         });
 
         function processSuccess(data, status, req) {
-            $("#response").text(req);
             alert(status);
             if (status === "success") {
                 alert("data:" + data);
@@ -28,6 +27,7 @@ var canlogin = function() {
                 $.each(req, function(key, value) {
                     alert(key + ": " + value);
                 });
+                $("#response").text(req.responseXML);
                 var response = $(req.responseXML).find("return").text();
 //                $("#response").text(response);
                 alert("response" + response);
