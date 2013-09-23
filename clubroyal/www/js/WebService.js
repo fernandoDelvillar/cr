@@ -18,15 +18,16 @@ var canlogin = function() {
         $("#response").text(data);
         alert(status);
         if (status === "success") {
-            var response = $(req.responseXML).find("return").text();
+            var response = $(data.responseXML).find("return").text();
             $("#response").text(response);
+            alert(response);
             var json = jQuery.parseJSON(response);
-            alert(json.login.toString());
-            if (json.login) {
-                $("#response").text($.base64.encode("1234"));
+            if (data.login) {
+//                $("#response").text($.base64.encode("1234"));
+                $("#loading").click();
             }
         } else {
-            alert(status);
+            alert("no sucess");
         }
     }
 
