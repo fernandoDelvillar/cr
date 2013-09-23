@@ -25,7 +25,7 @@ var canlogin = function() {
                 alert("data:" + data);
                 alert("req :" + req.toLocaleString());
                 alert("req :" + req.toString());
-                $.each(data, function(key, value) {
+                $.each(req, function(key, value) {
                     alert(key + ": " + value);
                 });
                 var response = $(req.responseXML).find("return").text();
@@ -33,7 +33,7 @@ var canlogin = function() {
                 alert("response" + response);
                 var json = jQuery.parseJSON(response);
                 alert(json);
-                if (data.login) {
+                if (json.login) {
                     //                $("#response").text($.base64.encode("1234"));
                     $("#loading").click();
                 }
