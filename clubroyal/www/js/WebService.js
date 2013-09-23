@@ -12,7 +12,7 @@ var canlogin = function() {
             type: "POST",
             url: wsUrl,
             contentType: "application/soap+xml",
-            dataType: "text",
+            dataType: "xml",
             data: soapRequest,
             success: processSuccess,
             error: processError
@@ -22,13 +22,15 @@ var canlogin = function() {
             $("#response").text(req);
             alert(status);
             if (status === "success") {
-                alert("data:"+data);
-                alert("req :"+req.toLocaleString());
-                alert("req :"+req.toString());
-                alert("req :"+req.toSource());
-                var response = $(req.responseXML).find("return").text();                
+                alert("data:" + data);
+                alert("req :" + req.toLocaleString());
+                alert("req :" + req.toString());
+                $.each(data, function(key, value) {
+                    alert(key + ": " + value);
+                });
+                var response = $(req.responseXML).find("return").text();
 //                $("#response").text(response);
-                alert("response"+response);
+                alert("response" + response);
                 var json = jQuery.parseJSON(response);
                 alert(json);
                 if (data.login) {
