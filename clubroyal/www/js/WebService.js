@@ -18,7 +18,9 @@ var canlogin = function() {
         $("#response").text(data);
         alert(status);
         if (status === "success") {
+            console.log(data);
             var response = $(data.responseXML).find("return").text();
+            console.log(response);
             $("#response").text(response);
             alert(response);
             var json = jQuery.parseJSON(response);
