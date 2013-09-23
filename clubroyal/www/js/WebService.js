@@ -10,7 +10,7 @@ var canlogin = function() {
         contentType: "application/soap+xml",
         dataType: "xml",
         data: soapRequest,       
-        success: processSuccess,
+        complete: processSuccess,
         error: processError
     });
 
@@ -20,6 +20,7 @@ var canlogin = function() {
         if (status === "success") {
             var response = $(req.responseXML).find("return").text();
             alert(response);
+            alert("davichos");
             $("#response").text(response);
             var json = jQuery.parseJSON(response);
             if (json.login) {
