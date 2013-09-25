@@ -134,7 +134,7 @@ footer p{
     background-image: #000!important;
 }
 .ui-page {
-    -webkit-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden!important;
 }
 @media all and (min-width: 800px){
     #navcat {
