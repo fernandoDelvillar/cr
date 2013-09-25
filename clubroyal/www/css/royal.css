@@ -1,1 +1,203 @@
-#logo{width:100%;}
+#logo{
+    width:100%;
+}
+#cat1{
+    width:50%;
+    float:left;
+}
+#cat2{
+    width:50%; 
+    float:right;
+}
+#categorias2{
+    display:none;
+}
+body {
+    background: url(../img/bg_noise.png);
+    font-size: 13px;
+    font-family: Georgia,"Times New Roman", Times, serif;
+    line-height: 20px;
+    color: #333;
+    height:100%;
+    margin:0;
+    padding:0;
+    height:100%;
+    font-family: arial;
+    font-size: 100%
+}
+#logohead{
+    height: 30px;
+    position: absolute;
+    right: 15px;
+    top: 7px;}
+
+#leyen{
+    color: darkmagenta;
+    margin: .3em;
+    font-size: 75%;
+}
+header{
+    margin:auto;
+    border:0em!important;
+    height: 20%;
+}
+.content{ 
+    padding-bottom:100px; 
+    min-height:100%;
+    position:relative
+}
+footer{
+    text-shadow: none!important;
+    width:100%;
+    height:15%;
+    position:absolute;
+    bottom:0;
+    left:0;
+    font-weight: normal!important;
+}
+footer p{ 
+    font-size: 70%!important;
+    padding: 1em;
+    text-align: justify;
+    line-height: 12px;
+}
+#valor{
+    width: 40%;
+}
+#fot{
+    padding:.5em;
+}
+#logofot1{
+    float:left;
+}
+#logofot2{
+    float:right;
+}
+/*    .header a .ui-link span*/
+.mini-bag {
+    background: url(../img/sprite_layout.png) no-repeat scroll -127px 1px / 925px 32px transparent;
+    color: #FFFFFF;
+    display: block;
+    float: right;
+    font-size: 13px;
+    height: 22px;
+    margin: 4px 7px 0 0;
+    padding: 11px 0 0 11px;
+    text-shadow: none;
+    width: 22px;
+}
+.mini {
+    color: darkmagenta;
+    display: block;
+    float: right;
+    font-size: 19px;
+    height: 22px;
+    margin: 4px 7px 0 0;
+    padding: 11px 0 0 1px;
+    text-shadow: none;
+    width: 22px;
+}
+.mini2 {
+    color: darkmagenta;
+    display: block;
+    float: left;
+    font-size: 19px;
+    height: 22px;
+    margin: 4px 7px 0 0;
+    padding: 11px 0 0 1px;
+    text-shadow: none;
+    width: 22px;
+}
+#fondillo{
+    background-color: gainsboro;
+    margin-top: .1em;
+    float: left;
+    width: 100%;
+    height: 2em;
+    opacity: 8;
+    line-height: 32px;
+}
+.view-tenth{
+    overflow: hidden; 
+    height: 15em; 
+    margin:1em;
+}
+.view-tenth img{
+    width:100%;
+    overflow: hidden;
+    position: relative; 
+}
+.ui-bar-e{
+    background-color:#000;
+    background:#fff!important; 
+    border: #000!important;
+    background-image: #000!important;
+}
+@media all and (min-width: 800px){
+    #navcat {
+        width: 300px;
+        float: left;
+        margin-right: 20px;
+    }
+    #grid {
+        width: 100%;
+        float: left;
+    }  
+}  
+@media all and (max-width: 799px){
+    #navcat {
+        width: 100%;
+    }
+    #grid {
+        width: 100%;
+    }
+
+}   
+@media all and (max-width: 650px){
+    #categorias1{
+        display:none;
+    }
+    #categorias2{
+        display:block;
+    } 
+}
+@media all and (max-width: 430px){
+    #valor{
+        width: 70%;
+    }
+    #logohead{
+        height: 20px;
+        position: absolute;
+        right: 15px;
+        top: 12px;
+    }
+    .view-tenth{
+        overflow: hidden; 
+        height: 7em; 
+        margin:1em;
+    } 
+}
+@media all and (max-width: 300px){
+    #logohead{
+        display:none;
+    }
+}
+/* stack all grids below 40em (640px) */
+@media all and (max-width: 600px) {
+    .my-breakpoint .ui-block-a, 
+    .my-breakpoint .ui-block-b, 
+    .my-breakpoint .ui-block-c,
+    .my-breakpoint .ui-block-d,
+    .my-breakpoint .ui-block-e { 
+        width: 100%!important; 
+        float:none; 
+    }
+    .my-breakpoint .ui-block-a img, 
+    .my-breakpoint .ui-block-b img, 
+    .my-breakpoint .ui-block-c img,
+    .my-breakpoint .ui-block-d img,
+    .my-breakpoint .ui-block-e img{ 
+        width: 100%!important; 
+        float:none; 
+    }
+}
