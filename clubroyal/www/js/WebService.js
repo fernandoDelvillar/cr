@@ -24,7 +24,7 @@ var canlogin = function() {
             var json = jQuery.parseJSON(response);
             if (json.login) {
                 //                $("#response").text($.base64.encode("1234"));
-                window.location.href = "home.html";  
+                $.mobile.changePage("home.html");  
             }
         } else {
             alert("no sucess");
