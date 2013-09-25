@@ -33,6 +33,17 @@
 
     </head>
     <body>
+        <script type="text/javascript">
+            $(document).on("mobileinit", function() {
+                alert("mobil init");
+                $.mobile.defaultPageTransition = "none";
+                $.mobile.changePage("#pageid", {
+                    transition: "none",
+                    reverse: true,
+                    changeHash: true
+                });
+            });
+        </script>
         <section data-role="page" data-title="categoria" data-theme="b" id="categoria" data-add-back-btn="true" class="ui-responsive-panel">
 
             <div data-role="header" data-theme="a" >

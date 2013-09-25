@@ -133,8 +133,10 @@ footer p{
     border: #000!important;
     background-image: #000!important;
 }
-.ui-page {
-    -webkit-backface-visibility: hidden!important;
+.ui-mobile, .ui-mobile .ui-page, .ui-mobile [data-role="page"],
+.ui-mobile [data-role="dialog"], .ui-page, .ui-mobile .ui-page-active {
+      overflow: hidden;
+      -webkit-backface-visibility: hidden;
 }
 @media all and (min-width: 800px){
     #navcat {

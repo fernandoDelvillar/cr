@@ -38,7 +38,13 @@
     <body>
         <script type="text/javascript">
             $(document).on("mobileinit", function() {
+                alert("mobil init");
                 $.mobile.defaultPageTransition = "none";
+                $.mobile.changePage("#pageid", {
+                    transition: "none",
+                    reverse: true,
+                    changeHash: true
+                });
             });
         </script>
         <div data-role="page"  data-title="scrollable" data-theme="b" class="scrollable">
@@ -71,14 +77,14 @@
                 </center>
             </section>
 
-<!--            <footer data-role="footer" data-position="fixed" data-tap-toggle="true">
-                <div data-role="navbar">
-                    <img id="logofot1" src="img/adventa.png">     <img id="logofot2" src="img/adbox.png">   
-                    <p>D.R.<abbr lang="en" title="Copyright"> &copy; </abbr>Copyright 2013.  Derechos Reservados.  Adventa y Adbox son marcas registradas de Publigraphics S.A. de C.V. 
-                        Quedan reservados todos los derechos de edición,  copia o reproducción parcial o total.
-                        Términos y condiciones de uso.  Aviso de Privacidad.</p>
-                </div>
-            </footer>-->
+            <!--            <footer data-role="footer" data-position="fixed" data-tap-toggle="true">
+                            <div data-role="navbar">
+                                <img id="logofot1" src="img/adventa.png">     <img id="logofot2" src="img/adbox.png">   
+                                <p>D.R.<abbr lang="en" title="Copyright"> &copy; </abbr>Copyright 2013.  Derechos Reservados.  Adventa y Adbox son marcas registradas de Publigraphics S.A. de C.V. 
+                                    Quedan reservados todos los derechos de edición,  copia o reproducción parcial o total.
+                                    Términos y condiciones de uso.  Aviso de Privacidad.</p>
+                            </div>
+                        </footer>-->
             <script type="text/javascript" src="phonegap.js"></script>
 
             <script type="text/javascript" src="js/index.js"></script>

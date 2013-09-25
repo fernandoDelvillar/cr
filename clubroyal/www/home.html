@@ -46,6 +46,17 @@
         <link rel="stylesheet" href="css/royal.css" />
     </head>
     <body>
+        <script type="text/javascript">
+            $(document).on("mobileinit", function() {
+                alert("mobil init");
+                $.mobile.defaultPageTransition = "none";
+                $.mobile.changePage("#pageid", {
+                    transition: "none",
+                    reverse: true,
+                    changeHash: true
+                });
+            });
+        </script>
         <div data-role="page"  data-title="scrollable" data-theme="b" class="scrollable">
             <section data-role="content" data-position="relative">
                 <header data-role="header" style="background:none;border: none;">
