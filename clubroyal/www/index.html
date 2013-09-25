@@ -37,10 +37,10 @@
     </head>
     <body>
         <script type="text/javascript">
-            $(document).on("mobileinit", function() {
+            $(document).on("pageinit", function() {
                 alert("mobil init");
                 $.mobile.defaultPageTransition = "none";
-                $.mobile.changePage("#pageid", {
+                $.mobile.changePage("#home", {
                     transition: "none",
                     reverse: true,
                     changeHash: true
