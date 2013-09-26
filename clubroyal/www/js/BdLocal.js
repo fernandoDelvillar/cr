@@ -35,8 +35,9 @@ function successCB() {
 function getCategorias() {
     var jsonObj = [];
     db.transaction(function(tx) {
-        tx.executeSql('SELECT * FROM CATEGORIAS WHERE esratus=1;', [], function(tx, results) {
+        tx.executeSql('SELECT * FROM CATEGORIAS WHERE estatus=1;', [], function(tx, results) {
             var len = results.rows.length;
+            alert(len);
             for (var i = 0; i < len; i++) {
                 jsonObj.push({"nombre": results.rows.item(i).nombre, "imagen": results.rows.item(i).imagen});
             }
