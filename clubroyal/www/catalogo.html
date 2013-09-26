@@ -80,7 +80,9 @@
                     <script type="text/javascript">
                         var categorias = getCategorias();
                         var html = "";
+                        alert(categorias);
                         $.each(categorias, function(categoria) {
+                            alert(categoria);
                             html += "<li><a href='categoria.html' > <img src='" + categoria.imagen + "'/><h2>" + categoria.nombre + "</h2></a></li>"
                         });
                         $("#menucat").html(html);
