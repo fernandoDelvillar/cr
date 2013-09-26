@@ -33,19 +33,24 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        alert("device Ready");
-        document.getElementById("userID").focus();
-        app.receivedEvent('deviceready');
+        var db = window.openDatabase("Database", "1.0", "Club Royal", 200000);
+        db.transaction(this.populateDB, this.errorCB, this.successCB);
     },
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+    populateDB: function(tx) {
+        tx.executeSql('DROP TABLE IF EXISTS DEMO');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+    },
+    // Transaction error callback
+    //
+    errorCB: function(tx, err) {
+        alert("Error processing SQL: " + err);
+    },
+    // Transaction success callback
+    //
+    successCB: function() {
+        alert("success!");
     }
 };
