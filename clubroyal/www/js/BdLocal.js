@@ -32,21 +32,18 @@ function successCB() {
     return true;
 }
 
-function getCategorias() {
-    var jsonObj = [];
-    db.transaction(function(tx) {
+function getCategorias() {    
+    return db.transaction(function(tx) {
         tx.executeSql('SELECT * FROM CATEGORIAS WHERE estatus=1;', [], function(tx, results) {
             var len = results.rows.length;
-            alert(len);
+            var jsonObj = [];
             for (var i = 0; i < len; i++) {
                 var temp = {"nombre": results.rows.item(i).nombre, "imagen": results.rows.item(i).imagen};
                 jsonObj.push(temp);
             }
-
+            return jsonObj;
         }, errorCB);
     }, errorCB);
-    alert(jsonObj.toString());
-    return jsonObj;
 }
 
 function queryDB(tx) {
