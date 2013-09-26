@@ -39,12 +39,14 @@ function getCategorias() {
             var len = results.rows.length;
             alert(len);
             for (var i = 0; i < len; i++) {
-                jsonObj.push({"nombre": results.rows.item(i).nombre, "imagen": results.rows.item(i).imagen});
+                var temp = {"nombre": '"' + results.rows.item(i).nombre + '"', "imagen": +'"' + results.rows.item(i).imagen + '"'};
+                alert(temp);
+                jsonObj.push(temp);
             }
 
         }, errorCB);
     }, errorCB);
-    alert(jsonObj);
+    alert(jsonObj.items);
     return jsonObj;
 }
 
