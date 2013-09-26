@@ -17,7 +17,7 @@
  * under the License.
  */
 var app = {
-    // Application Constructor
+// Application Constructor
     initialize: function() {
         this.bindEvents();
     },
@@ -38,19 +38,42 @@ var app = {
     },
     // Update DOM on a Received Event
     populateDB: function(tx) {
+        alert("populating");
         tx.executeSql('DROP TABLE IF EXISTS DEMO');
         tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
         tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+        alert("finish populating");
+        return true;
     },
     // Transaction error callback
     //
     errorCB: function(tx, err) {
         alert("Error processing SQL: " + err);
+        return false;
     },
     // Transaction success callback
     //
     successCB: function() {
         alert("success!");
+        var db = window.openDatabase("Database", "1.0", "Cordova Demo", 200000);
+        db.transaction(this.queryDB, this.errorCB);
+        return true;
+    },
+    queryDB: function(tx) {
+        tx.executeSql('SELECT * FROM DEMO', [], this.querySuccess, this.errorCB);
+    },
+            
+    querySuccess: function(tx, results) {
+        alert("Returned rows = " + results.rows.length);
+        // this will be true since it was a select statement and so rowsAffected was 0
+        if (!results.rowsAffected) {
+            alert('No rows affected!');
+            return false;
+        }
+        // for an insert statement, this property will return the ID of the last inserted row
+        alert("Last inserted row ID = " + results.insertId);
+        return true;
     }
+
 };
