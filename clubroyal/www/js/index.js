@@ -60,6 +60,7 @@ var app = {
     successCB: function() {
         alert("success!");
         var db = window.openDatabase("Database", "1.0", "Club Royal", 1000000);
+        alert("database created");
         db.transaction(this.queryDB, this.errorCB);
         return true;
     },
