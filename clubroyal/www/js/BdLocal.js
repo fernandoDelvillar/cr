@@ -5,7 +5,6 @@
 
 var db = window.openDatabase("Database", "1.0", "Club Royal", 30 * 1024);
 var ItemId = 0;
-
 function CreaTablas(tx) {
     tx.executeSql('DROP TABLE IF EXISTS CATEGORIAS');
     tx.executeSql('CREATE TABLE IF NOT EXISTS CATEGORIAS("id" INTEGER PRIMARY KEY,"nombre" CHAR(20) NOT NULL, "imagen" TEXT NOT NULL,  "estatus" INTEGER NOT NULL)');
@@ -23,7 +22,7 @@ function CreaTablas(tx) {
 }
 
 function errorCB(err) {
-    // Esto se puede ir a un Log de Error diría el purista de la oficina, pero como este es un ejemplo pongo el MessageBox.Show :P
+// Esto se puede ir a un Log de Error diría el purista de la oficina, pero como este es un ejemplo pongo el MessageBox.Show :P
     alert("Error processing SQL: Codigo: " + err.code + " Mensaje: " + err.message);
 }
 
@@ -32,32 +31,22 @@ function successCB() {
     return true;
 }
 
-function getCategorias() {    
-    return db.transaction(function(tx) {
-        tx.executeSql('SELECT * FROM CATEGORIAS WHERE estatus=1;', [], function(tx, results) {
-            var len = results.rows.length;
-            var jsonObj = [];
-            for (var i = 0; i < len; i++) {
-                var temp = {"nombre": results.rows.item(i).nombre, "imagen": results.rows.item(i).imagen};
-                jsonObj.push(temp);
-            }
-            return jsonObj;
-        }, errorCB);
-    }, errorCB);
+function getCategorias() {
+    return db.transaction(queryCategorias, errorCB);
 }
 
-function queryDB(tx) {
+function queryCategorias(tx) {
+    return tx.executeSql('SELECT * FROM CATEGORIAS WHERE estatus=1;', [], categoriasSuccess, errorCB);
 }
 
-function querySuccess(tx, results) {
-    alert("Returned rows = " + results.rows.length);
-    // this will be true since it was a select statement and so rowsAffected was 0
-    if (!results.rowsAffected) {
-        alert('No rows affected!');
-        return false;
+function categoriasSuccess(tx, results) {
+    var jsonObj = [];
+    var len = results.rows.length;
+    for (var i = 0; i < len; i++) {
+        var temp = {"nombre": results.rows.item(i).nombre, "imagen": results.rows.item(i).imagen};
+        jsonObj.push(temp);
     }
-    // for an insert statement, this property will return the ID of the last inserted row
-    return true;
+    return jsonObj;
 }
 
 function CreaDB() {
