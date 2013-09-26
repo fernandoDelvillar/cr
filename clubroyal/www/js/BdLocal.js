@@ -7,11 +7,19 @@ var db = window.openDatabase("Database", "1.0", "Club Royal", 30 * 1024);
 var ItemId = 0;
 
 function CreaTablas(tx) {
-    tx.executeSql('DROP TABLE IF EXISTS DEMO');
-    tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
-    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
-    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
-    alert("finish populating");
+    tx.executeSql('DROP TABLE IF EXISTS CATEGORIAS');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS CATEGORIAS("id" INTEGER PRIMARY KEY,"nombre" CHAR(20) NOT NULL, "imagen" TEXT NOT NULL,  "estatus" INTEGER NOT NULL)');
+    tx.executeSql('INSERT INTO CATEGORIAS VALUES (1,"ArtÍculos de Viaje","img/resized/ALLY-16-08-201_100x100.jpg",1),\n\
+        (2,"Aventura al aire libre","img/resized/ALLY-33-12-298_100x100.jpg",1), \n\
+        (3,"Decoración y hogar","img/resized/ALLY-38-02-549_100x100.jpg",1), \n\
+        (4,"Entretenimiento","img/resized/ALLY-10-03-444_100x100.jpg",1), \n\
+        (5,"Para Él","img/resized/ALLY-04-01-017_100x100.jpg",1), \n\
+        (6,"Para Ella","img/resized/ALLY-29-10-289_100x100.jpg",1), \n\
+        (7,"Niños y bebés","img/resized/ALLY-03-06-010_100x100.jpg",1), \n\
+        (8,"Experiencias","img/resized/ALLY-95-04-948.jpg",1), \n\
+        (9,"Línea Blanca","img/resized/ALLY-19-02-928.jpg",1), \n\
+        (10,"Tecnología","img/resized/ALLY-90-05-941_100x100.jpg",1), \n\
+        (11,"Salud y Belleza","img/resized/ALLY-04-01-017_100x100.jpg",1);');
 }
 
 function errorCB(err) {
@@ -20,13 +28,25 @@ function errorCB(err) {
 }
 
 function successCB() {
-    alert("Success");
     db.transaction(queryDB, errorCB);
     return true;
 }
 
+function getCategorias() {
+    var jsonObj = [];
+    db.transaction(function(tx) {
+        tx.executeSql('SELECT * FROM CATEGORIAS WHERE esratus=1', [], function(tx, results) {
+            var len = results.rows.length;
+            for (var i = 0; i < len; i++) {
+                jsonObj.push({"nombre": results.rows.item(i).nombre, "imagen": results.rows.item(i).imagen});
+            }
+
+        }, errorCB);
+    }, errorCB);
+    return jsonObj;
+}
+
 function queryDB(tx) {
-    tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
 }
 
 function querySuccess(tx, results) {
@@ -37,7 +57,6 @@ function querySuccess(tx, results) {
         return false;
     }
     // for an insert statement, this property will return the ID of the last inserted row
-    alert("Last inserted row ID = " + results.insertId);
     return true;
 }
 
@@ -46,13 +65,11 @@ function CreaDB() {
 }
 
 function Agregar(n) {
-    switch (n)
-    {
+    switch (n) {
         case 1:
             db.transaction(AgregaItem, errorCB, successCB);
             break;
         default:
-
     }
 }
 
@@ -61,8 +78,7 @@ function AgregaItem(tx) {
 }
 
 function Mostrar(n) {
-    switch (n)
-    {
+    switch (n) {
         case 1:
             db.transaction(ObtenerItems, errorCB);
             break;
@@ -111,8 +127,7 @@ function MuestraItems(tx, results) {
 
 function Borrar(n, itemId) {
     ItemId = itemId;
-    switch (n)
-    {
+    switch (n) {
         case 1:
             db.transaction(BorrarItem, errorCB);
             break;
