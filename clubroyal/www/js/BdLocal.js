@@ -44,6 +44,7 @@ function getCategorias() {
 
         }, errorCB);
     }, errorCB);
+    alert(jsonObj);
     return jsonObj;
 }
 
