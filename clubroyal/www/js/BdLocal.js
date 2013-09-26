@@ -1,10 +1,11 @@
-/* 
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * 
+ * @type @exp;window@call;openDatabase
  */
 
 var db = window.openDatabase("Database", "1.0", "Club Royal", 30 * 1024);
 var ItemId = 0;
+
 function CreaTablas(tx) {
     tx.executeSql('DROP TABLE IF EXISTS CATEGORIAS');
     tx.executeSql('CREATE TABLE IF NOT EXISTS CATEGORIAS("id" INTEGER PRIMARY KEY,"nombre" CHAR(20) NOT NULL, "imagen" TEXT NOT NULL,  "estatus" INTEGER NOT NULL)');
@@ -27,7 +28,6 @@ function errorCB(err) {
 }
 
 function successCB() {
-    db.transaction(queryDB, errorCB);
     return true;
 }
 
@@ -41,10 +41,12 @@ function queryCategorias(tx) {
 
 function categoriasSuccess(tx, results) {
     var jsonObj = [];
-    var len = results.rows.length;
-    for (var i = 0; i < len; i++) {
-        var temp = {"nombre": results.rows.item(i).nombre, "imagen": results.rows.item(i).imagen};
-        jsonObj.push(temp);
+    if (results.rows.length !== undefined) {
+        var len = results.rows.length;
+        for (var i = 0; i < len; i++) {
+            var temp = {"nombre": results.rows.item(i).nombre, "imagen": results.rows.item(i).imagen};
+            jsonObj.push(temp);
+        }
     }
     return jsonObj;
 }
@@ -60,71 +62,4 @@ function Agregar(n) {
             break;
         default:
     }
-}
-
-function AgregaItem(tx) {
-    tx.executeSql('INSERT INTO Items (Nombre,Descripcion,Precio,Existencia) VALUES (?,?,?,?)', [$('#tbNombre').val(), $('#tbDescripcion').val(), $('#tbPrecio').val(), $('#tbExistencia').val()]);
-}
-
-function Mostrar(n) {
-    switch (n) {
-        case 1:
-            db.transaction(ObtenerItems, errorCB);
-            break;
-        case 2:
-            db.transaction(ObtenerItem, errorCB);
-            break;
-            break;
-        default:
-
-    }
-}
-
-function ObtenerItems(tx) {
-    tx.executeSql('SELECT * FROM Items', [], MuestraItems, errorCB);
-}
-
-function ObtenerItem(tx) {
-    tx.executeSql('SELECT * FROM Items WHERE itemId=' + ItemId, [], MuestraItem, errorCB);
-}
-
-function MuestraItem(tx, results) {
-    var len = results.rows.length;
-    if (len > 0) {
-        if (results.rows.item(0).Nombre != "") {
-            $('#tbTarjetaDescripcion').val(results.rows.item(0).Nombre);
-        }
-        if (results.rows.item(0).Descripcion != "") {
-            $('#tbFechaCorte').val(results.rows.item(0).Descripcion);
-        }
-        if (results.rows.item(0).Precio != "") {
-            $('#tbFechaLimitePago').val(results.rows.item(0).Precio);
-        }
-        if (results.rows.item(0).Existencia != "") {
-            $('#tbLimiteCredito').val(results.rows.item(0).Existencia);
-        }
-    }
-}
-
-function MuestraItems(tx, results) {
-    var len = results.rows.length;
-    for (var i = 0; i < len; i++) {
-        $("#ListaEliminarId" + results.rows.item(i).itemId).remove();
-        $("#ListaEliminar").append('<li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-corner-top ui-btn-up-c" data-theme="c" data-iconpos="right" data-icon="arrow-r" data-wrapperels="div" data-iconshadow="true" data-shadow="false" data-corners="false"><div class="ui-btn-inner ui-li ui-corner-top" id="ListaEliminarId' + results.rows.item(i).itemId + '"><div class="ui-btn-text" onclick="Borrar(1,' + results.rows.item(i).itemId + ')">' + results.rows.item(i).Nombre + '</div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>');
-    }
-}
-
-function Borrar(n, itemId) {
-    ItemId = itemId;
-    switch (n) {
-        case 1:
-            db.transaction(BorrarItem, errorCB);
-            break;
-        default:
-
-    }
-}
-
-function BorrarItem(tx) {
-    tx.executeSql('DELETE FROM Items WHERE itemId=?', [ItemId], successCB, errorCB);
 }
