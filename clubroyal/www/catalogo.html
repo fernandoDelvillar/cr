@@ -33,12 +33,11 @@
     </head>
     <body>
         <script type="text/javascript">
-            $(document).on("mobileinit", function() {
-                alert("mobil init");
+            $(document).on("pageinit", function() {
                 $.mobile.defaultPageTransition = "none";
                 $.mobile.changePage("#pageid", {
                     transition: "none",
-                    reverse: true,
+//                    reverse: true,
                     changeHash: true
                 });
             });
@@ -48,29 +47,13 @@
                 <div data-role="header" data-theme="a" >
                     <a href="home.html" data-icon="back" >Atr&aacute;s</a>
                     <h1> Cat&aacute;logo</h1>
-                    <img align="right" id="logohead" src="img/logohead.png">
-
-                    <!--center> 
-                        <a href="index.html" id="refresh" data-ajax="false" data-icon="refresh" >
-                        <img id="logo" src="img/logo.png">
-                        </a></center-->
+                    <a href="home.html" ><img align="right" id="logohead" src="img/logohead.png"></a>
                 </div>
-
                 <section data-role="content">
-
-                    <!--div class="ui-grid-a" >
-                           <div class="ui-block-a">
-                               bloque 1</div>
-                    
-                           <div class="ui-block-b">
-                               bloque 2
-                           </div>
-                  </div-->
                     <div class="">
                         <span class="mini"> 20 </span><span class="mini-bag item-count">&nbsp;</span>
                     </div>
                     <h1> Elije una categor&iacute;a.</h1>
-
                     <div id="categorias1" >
                         <div  id="cat1" >
                             <ul data-role="listview" data-inset="true" data-theme="d" id="menucat" >
@@ -83,7 +66,6 @@
                             </ul>
 
                         </div>
-
                         <div id="cat2" >
                             <ul data-role="listview" data-inset="true" data-theme="d" id="menucat" >
                                 <li><a href="restaurant.HTML" > <img src="img/resized/ALLY-03-06-010_100x100.jpg"/> <h2>Ni&ntilde;os y Beb&eacute;s</h2></a></li>
@@ -94,7 +76,6 @@
                             </ul>
                         </div>
                     </div>
-
                     <div id="categorias2" >
                         <div  id="cat0" >
                             <ul data-role="listview" data-inset="true" data-theme="d" id="menucat" >
@@ -113,10 +94,7 @@
                         </div>
                     </div>
                     <br>
-
-
                 </section>
-
                 <footer data-role="footer" data-position="fixed" >
                     <div id="fot">
                         <img id="logofot1" src="img/adventa.png">     <img id="logofot2" src="img/adbox.png">   

@@ -31,7 +31,6 @@
         <script src="js/jquery.mobile-1.3.2.min.js"></script>
         <title>Club Royal</title>
         <script>//for any page after the login page!
-
             $(document).on("swiperight", function(event, ui) {
                 $("#notification").panel("open");
             });
@@ -47,12 +46,11 @@
     </head>
     <body>
         <script type="text/javascript">
-            $(document).on("mobileinit", function() {
-                alert("mobil init");
+            $(document).on("pageinit", function() {
                 $.mobile.defaultPageTransition = "none";
                 $.mobile.changePage("#pageid", {
                     transition: "none",
-                    reverse: true,
+//                    reverse: true,
                     changeHash: true
                 });
             });
@@ -62,35 +60,15 @@
                 <header data-role="header" style="background:none;border: none;">
                     <center><img id="logo" src="img/logo.png"></center>
                 </header>
-
-
                 <section data-role="content">
-
-                    <!--div class="ui-grid-a" >
-                           <div class="ui-block-a">
-                               bloque 1</div>
-                    
-                           <div class="ui-block-b">
-                               bloque 2
-                           </div>
-                  </div-->
                     <div class="">
-
                         <h1> Porfavor elige una opción.</h1>
-
                         <ul data-role="listview" data-inset="true" data-theme="d" id="mainMenu" >
-
                             <li><a href="catalogo.html" > <img src="img/premios.png"/> <h2> Premios</h2> <p> Elige tu premio</p></a></li>
-
-                            <li><a href="#micuenta" > <img src="img/cuenta.png"/> <h2> Mi cuenta </h2> <p> Revisa tu estado de cuenta </p> </a></li>
-
+                            <li><a href="estadocta.html" > <img src="img/cuenta.png"/> <h2> Mi cuenta </h2> <p> Revisa tu estado de cuenta </p> </a></li>
                             <li><a href="#pedidos" > <img src="img/pedidos.png"/> <h2> Pedidos</h2> <p> Revisa tus pedidos realizados </p> </a></li>
-
-                            <li><a href="#login" > <img src="img/salir.png"/> <h2> Salir</h2><p> �Regresa muy pronto! </p> </a></li>
-
-
+                            <li><a href="index.html" > <img src="img/salir.png"/> <h2> Salir</h2><p> !Regresa muy pronto! </p> </a></li>
                         </ul>
-
                     </div>
                     <br>
                     <br>
