@@ -36,19 +36,21 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         alert("device ready");
-        var db = window.openDatabase("Database", "1", "Club Royal", 1000000);
+        var db = window.openDatabase("Database", "1.0", "Club Royal", 1000000);
+        alert("changin gersion");
+        db.changeVersion("1.0", "1.1");
         alert("creating database");
         db.transaction(this.populateDB, this.errorCB, this.successCB);
     },
     // Update DOM on a Received Event
     populateDB: function(tx) {
         alert("populating");
-        tx.executeSql('DROP TABLE IF EXISTS DEMO');
-        tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
-        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
-        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
-        alert("finish populating");
-        return true;
+//        tx.executeSql('DROP TABLE IF EXISTS DEMO');
+//        tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+//        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+//        tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+//        alert("finish populating");
+//        return true;
     },
     // Transaction error callback
     //
@@ -60,10 +62,10 @@ var app = {
     //
     successCB: function() {
         alert("success!");
-        var db = window.openDatabase("Database", "1.0", "Club Royal", 1000000);
-        alert("database created");
-        db.transaction(this.queryDB, this.errorCB);
-        return true;
+//        var db = window.openDatabase("Database", "1.0", "Club Royal", 1000000);
+//        alert("database created");
+//        db.transaction(this.queryDB, this.errorCB);
+//        return true;
     },
     queryDB: function(tx) {
         tx.executeSql('SELECT * FROM DEMO', [], this.querySuccess, this.errorCB);
