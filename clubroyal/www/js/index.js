@@ -36,7 +36,8 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         alert("device ready");
-        var db = window.openDatabase("Database", "1.0", "Club Royal", 1000000);
+        var db = window.openDatabase("Database", "1", "Club Royal", 1000000);
+        alert("creating database");
         db.transaction(this.populateDB, this.errorCB, this.successCB);
     },
     // Update DOM on a Received Event
