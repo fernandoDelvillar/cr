@@ -1,8 +1,3 @@
-/**
- * 
- * @type @exp;window@call;openDatabase
- */
-
 var db = window.openDatabase("Database", "1.0", "Club Royal", 30 * 1024);
 var ItemId = 0;
 
@@ -41,25 +36,19 @@ function queryCategorias(tx) {
 
 function categoriasSuccess(tx, results) {
     var jsonObj = [];
-    if (results.rows.length !== undefined) {
-        var len = results.rows.length;
-        for (var i = 0; i < len; i++) {
-            var temp = {"nombre": results.rows.item(i).nombre, "imagen": results.rows.item(i).imagen};
-            jsonObj.push(temp);
-        }
-    }
-    return jsonObj;
+    alert(results.toString());
+    alert("results.toString()");
+//    if (results.rows.length !== undefined) {
+//        var len = results.rows.length;
+//        alert(len);
+//        for (var i = 0; i < len; i++) {
+//            var temp = {"nombre": results.rows.item(i).nombre, "imagen": results.rows.item(i).imagen};
+//            jsonObj.push(temp);
+//        }
+//    }
+//    return jsonObj;
 }
 
 function CreaDB() {
     db.transaction(CreaTablas, errorCB, successCB);
-}
-
-function Agregar(n) {
-    switch (n) {
-        case 1:
-            db.transaction(AgregaItem, errorCB, successCB);
-            break;
-        default:
-    }
 }
