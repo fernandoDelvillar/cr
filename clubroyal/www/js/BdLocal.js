@@ -3,11 +3,15 @@
  * and open the template in the editor.
  */
 
-var db = window.openDatabase("Database", "1.0", "Club Royal", 30*1024);
+var db = window.openDatabase("Database", "1.0", "Club Royal", 30 * 1024);
 var ItemId = 0;
 
 function CreaTablas(tx) {
-    tx.executeSql('CREATE TABLE IF NOT EXISTS Items (itemId INTEGER PRIMARY KEY, Nombre Varchar(100), Descripcion VARCHAR(100), Precio INTEGER, Existencia INTEGER);');
+    tx.executeSql('DROP TABLE IF EXISTS DEMO');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS DEMO (id unique, data)');
+    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (1, "First row")');
+    tx.executeSql('INSERT INTO DEMO (id, data) VALUES (2, "Second row")');
+    alert("finish populating");
 }
 
 function errorCB(err) {
@@ -17,6 +21,24 @@ function errorCB(err) {
 
 function successCB() {
     alert("Success");
+    db.transaction(queryDB, errorCB);
+    return true;
+}
+
+function queryDB(tx) {
+    tx.executeSql('SELECT * FROM DEMO', [], querySuccess, errorCB);
+}
+
+function querySuccess(tx, results) {
+    alert("Returned rows = " + results.rows.length);
+    // this will be true since it was a select statement and so rowsAffected was 0
+    if (!results.rowsAffected) {
+        alert('No rows affected!');
+        return false;
+    }
+    // for an insert statement, this property will return the ID of the last inserted row
+    alert("Last inserted row ID = " + results.insertId);
+    return true;
 }
 
 function CreaDB() {
