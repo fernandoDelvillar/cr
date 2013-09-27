@@ -33,7 +33,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        CreaDB();
+//        CreaDB();
     },
     // Update DOM on a Received Event
     populateDB: function(tx) {

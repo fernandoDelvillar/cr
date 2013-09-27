@@ -23,6 +23,7 @@ function errorCB(err) {
 }
 
 function successCB() {
+    alert("sucess");
     return true;
 }
 
@@ -31,24 +32,40 @@ function getCategorias() {
 }
 
 function queryCategorias(tx) {
-    return tx.executeSql('SELECT * FROM CATEGORIAS WHERE estatus=1;', [], categoriasSuccess, errorCB);
+    tx.executeSql('SELECT * FROM CATEGORIAS WHERE estatus=1;', [], categoriasSuccess, errorCB);
 }
 
 function categoriasSuccess(tx, results) {
-    var jsonObj = [];
-    alert(results.toString());
-    alert("results.toString()");
-//    if (results.rows.length !== undefined) {
-//        var len = results.rows.length;
-//        alert(len);
-//        for (var i = 0; i < len; i++) {
-//            var temp = {"nombre": results.rows.item(i).nombre, "imagen": results.rows.item(i).imagen};
-//            jsonObj.push(temp);
-//        }
-//    }
-//    return jsonObj;
+    if (results.rows.length !== undefined) {
+        llenaCategoria(results);
+        llenaPanel(results);
+    }
+}
+function llenaCategoria(results) {
+    var len = results.rows.length;
+    for (var i = 0; i < len; i++) {
+        var row = results.rows.item(i);
+        $('#menucat').append($('<li/>', {//here appending `<li>`
+        }).append($('<a/>', {//here appending `<a>` into `<li>`
+            'href': 'categoria.html?id='+row.id,
+            'text': row.nombre
+        }).prepend('<img src="' + row.imagen + '"/>')));
+    }
+    $('#menucat').listview('refresh');
 }
 
+function llenaPanel(results) {
+    var len = results.rows.length;
+    for (var i = 0; i < len; i++) {
+        var row=results.rows.item(i);
+        $('#panelCategoria').append($('<li/>', {//here appending `<li>`
+        }).append($('<a/>', {//here appending `<a>` into `<li>`
+            'href': 'categoria.html?id='+row.id,
+            'text': row.nombre
+        })));
+    }
+    $('#panelCategoria').listview('refresh');
+}
 function CreaDB() {
     db.transaction(CreaTablas, errorCB, successCB);
 }
