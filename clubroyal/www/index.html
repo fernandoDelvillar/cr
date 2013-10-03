@@ -29,23 +29,14 @@
         <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"/>
         <link rel="stylesheet" href="css/jquery.mobile.structure-1.3.2.min.css" />
         <link rel="stylesheet" href="css/jquery.mobile.theme-1.3.2.min.css" />
-        <title>Club Royal</title>
+        <link rel="stylesheet" href="css/royal.css" />
 
         <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script>
-        <link rel="stylesheet" href="css/royal.css" />
+
+        <title>Club Royal</title>
     </head>
     <body>
-        <script type="text/javascript">
-            $(document).on("pageinit", function() {
-                $.mobile.defaultPageTransition = "none";
-                $.mobile.changePage("#home", {
-                    transition: "none",
-//                    reverse: true,
-                    changeHash: true
-                });
-            });
-        </script>
         <div data-role="page"  data-title="scrollable" data-theme="b" class="scrollable">
             <header data-role="header" style="background:none;border: none;">
                 <center><img id="logo" src="img/logo.png"></center>
@@ -87,11 +78,16 @@
             <script type="text/javascript" src="phonegap.js"></script>
             <script type="text/javascript" src="js/index.js"></script>
             <script type="text/javascript" src="js/jquery.base64.js"></script>
+            <script type="text/javascript" src="js/sesion.js"></script>            
             <script type="text/javascript" src="js/WebService.js"></script>            
             <script type="text/javascript" src="js/BdLocal.js"></script>            
             <script type="text/javascript">
 //            app.initialize();
-            CreaDB();
+                            $(document).on("pageinit", function() {
+                                $.mobile.defaultPageTransition = "none";
+                            });
+                            sesion.clear();
+                            CreaDB();
             </script>
         </div>
     </body>

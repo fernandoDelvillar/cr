@@ -1,7 +1,15 @@
 var db = window.openDatabase("Database", "1.0", "Club Royal", 30 * 1024);
 var ItemId = 0;
-
-function CreaTablas(tx) {
+var CreaDB = function() {
+    db.transaction(CreaTablas, errorCB, successCB);
+};
+var CreaTablas = function(tx) {
+    creaTablaCategorias(tx);
+    creaTablaProductos(tx);
+//    creaTablaSesion(tx);
+    creaTablaCarrito(tx);
+};
+var creaTablaCategorias = function(tx) {
     tx.executeSql('DROP TABLE IF EXISTS CATEGORIAS');
     tx.executeSql('CREATE TABLE IF NOT EXISTS CATEGORIAS("id" INTEGER PRIMARY KEY,"nombre" CHAR(20) NOT NULL, "imagen" TEXT NOT NULL,  "estatus" INTEGER NOT NULL)');
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES (1,"ArtÍculos de Viaje","img/resized/ALLY-16-08-201_100x100.jpg",1);');
@@ -15,57 +23,208 @@ function CreaTablas(tx) {
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(9,"Línea Blanca","img/resized/ALLY-19-02-928.jpg",1);');
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(10,"Tecnología","img/resized/ALLY-90-05-941_100x100.jpg",1);');
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(11,"Salud y Belleza","img/resized/ALLY-04-01-017_100x100.jpg",1);');
-}
-
-function errorCB(err) {
+};
+var creaTablaProductos = function(tx) {
+    tx.executeSql('DROP TABLE IF EXISTS PRODUCTOS');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS PRODUCTOS("id" INTEGER PRIMARY KEY,"id_categoria" INTEGER,"nombre" CHAR(20) NOT NULL, "descripcion" TEXT NOT NULL,"sku" CHAR(15) NOT NULL, "precio" INTEGER, "imagen" TEXT NOT NULL, "estatus" INTEGER NOT NULL)');
+    tx.executeSql('INSERT INTO PRODUCTOS ("id","id_categoria","nombre","descripcion","sku","precio","imagen","estatus") VALUES (1,1,\'Tienda Camping "Adventure"\',"190 x 100 x 106 cm. Con protector UV solar y barras de fibra. Incluye bolsa contenedora.","ALLY-27-12-347",200,"img/max/ALLY-27-12-347.jpg",1);');
+};
+var creaTablaSesion = function(tx) {
+//    tx.executeSql('DROP TABLE IF EXISTS SESION');
+//    tx.executeSql('CREATE TABLE IF NOT EXISTS SESION("id" INTEGER PRIMARY KEY,"id_user" INTEGER,"nombre" CHAR(20) NOT NULL, "descripcion" TEXT NOT NULL,"sku" CHAR(15) NOT NULL, "precio" INTEGER, "imagen" TEXT NOT NULL, "estatus" INTEGER NOT NULL)');
+//    tx.executeSql('INSERT INTO PRODUCTOS ("id","id_categoria","nombre","descripcion","sku","imagen","precio","estatus") VALUES (1,1,"Tienda Camping \"Adventure\"","190 x 100 x 106 cm. Con protector UV solar y barras de fibra. Incluye bolsa contenedora.","ALLY-27-12-347",200,"img/max/ALLY-27-12-347.jpg",1);');
+};
+var creaTablaCarrito = function(tx) {
+    tx.executeSql('DROP TABLE IF EXISTS CARRITO');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS CARRITO("id" INTEGER PRIMARY KEY,"id_producto" INTEGER,"cantidad" INTEGER)');
+};
+var errorCB = function(err) {
 // Esto se puede ir a un Log de Error diría el purista de la oficina, pero como este es un ejemplo pongo el MessageBox.Show :P
-    alert("Error processing SQL: Codigo: " + err.code + " Mensaje: " + err.message);
-}
-
-function successCB() {
-    alert("sucess");
+    $.mobile.changePage("index.html");
+};
+var successCB = function() {
     return true;
-}
-
-function getCategorias() {
+};
+var getCategorias = function() {
     return db.transaction(queryCategorias, errorCB);
-}
-
-function queryCategorias(tx) {
+};
+var queryCategorias = function(tx) {
     tx.executeSql('SELECT * FROM CATEGORIAS WHERE estatus=1;', [], categoriasSuccess, errorCB);
-}
-
-function categoriasSuccess(tx, results) {
+};
+var categoriasSuccess = function(tx, results) {
     if (results.rows.length !== undefined) {
         llenaCategoria(results);
+        llenaCategoriaHigh(results);
         llenaPanel(results);
     }
-}
-function llenaCategoria(results) {
+};
+var llenaCategoria = function(results) {
     var len = results.rows.length;
+    $('#menucat').children().remove('li');
     for (var i = 0; i < len; i++) {
         var row = results.rows.item(i);
         $('#menucat').append($('<li/>', {//here appending `<li>`
         }).append($('<a/>', {//here appending `<a>` into `<li>`
-            'href': 'categoria.html?id='+row.id,
+            'href': 'categoria.html?id=' + row.id,
             'text': row.nombre
         }).prepend('<img src="' + row.imagen + '"/>')));
     }
     $('#menucat').listview('refresh');
-}
-
-function llenaPanel(results) {
+};
+var llenaCategoriaHigh = function(results) {
+    var len = results.rows.length;
+    var id = 1;
+    $('#menucat1').children().remove('li');
+    $('#menucat2').children().remove('li');
+    for (var i = 0; i < len; i++) {
+        if (i > 5) {
+            id = 2;
+        }
+        var row = results.rows.item(i);
+        $('#menucat' + id).append($('<li/>', {//here appending `<li>`
+        }).append($('<a/>', {//here appending `<a>` into `<li>`
+            'href': 'categoria.html?id=' + row.id,
+            'text': row.nombre
+        }).prepend('<img src="' + row.imagen + '"/>')));
+    }
+    $('#menucat1').listview('refresh');
+    $('#menucat2').listview('refresh');
+};
+var llenaPanel = function(results) {
+    $('#panelCategoria').children().remove('li');
     var len = results.rows.length;
     for (var i = 0; i < len; i++) {
-        var row=results.rows.item(i);
+        var row = results.rows.item(i);
         $('#panelCategoria').append($('<li/>', {//here appending `<li>`
         }).append($('<a/>', {//here appending `<a>` into `<li>`
-            'href': 'categoria.html?id='+row.id,
+            'href': 'categoria.html?id=' + row.id,
             'text': row.nombre
         })));
     }
     $('#panelCategoria').listview('refresh');
-}
-function CreaDB() {
-    db.transaction(CreaTablas, errorCB, successCB);
-}
+};
+
+var getProductos = function(categoriaID) {
+    getCategorias();
+    if (undefined !== categoriaID) {
+        return db.transaction(function(tx) {
+            tx.executeSql('SELECT * FROM PRODUCTOS WHERE id_categoria=' + categoriaID + ' AND estatus=1;', [], productosSuccess, errorCB);
+        }, errorCB);
+    }
+};
+var productosSuccess = function(tx, results) {
+    if (results.rows !== undefined) {
+        var len = results.rows.length;
+        $('#productos').remove('div');
+        $('#catcontent').append($('<div/>', {
+            'id': 'productos',
+            'class': 'ui-grid-c my-breakpoint'
+        }));
+        for (var i = 0; i < len; i++) {
+            var row = results.rows.item(i);
+            $('#productos').append($('<div/>', {
+                'class': 'ui-block-a'
+            }).append($('<div/>', {//here appending `<a>` into `<li>`
+                'class': 'ui-body ui-body-d'
+            }).append($('<a/>', {//here appending `<a>` into `<li>`
+                'href': 'producto.html?id=' + row.id
+            }).prepend('<img src="' + row.imagen + '"/>'))));
+        }
+    }
+};
+var getProductoInfo = function(productoID) {
+    if (productoID !== undefined) {
+        return db.transaction(function(tx) {
+            tx.executeSql('SELECT * FROM PRODUCTOS WHERE id=' + productoID + ' AND estatus=1;', [], productoInfoSuccess, errorCB);
+        }, errorCB);
+    }
+};
+var productoInfoSuccess = function(tx, results) {
+    if (results.rows !== undefined) {
+        var len = results.rows.length;
+        for (var i = 0; i < len; i++) {
+            var row = results.rows.item(i);
+            $('#productName').text(row.nombre);
+            $('#image').html('<img src="' + row.imagen + '"/>');
+            $('#precio').text(row.precio);
+            $('#sku').text(row.sku);
+            $('#descripcion').text(row.descripcion);
+        }
+    }
+};
+
+var addCart = function(idProducto, cantidad) {
+    db.transaction(function(tx) {
+        tx.executeSql('INSERT INTO CARRITO ("id_producto","cantidad") VALUES (?,?)', [idProducto, cantidad], function(tx, result) {
+        }, errorCB);
+    }, errorCB);
+};
+
+var showCart = function() {
+    var retur=null;
+    db.transaction(function(tx) {
+        tx.executeSql('SELECT * FROM CARRITO AS a INNER JOIN PRODUCTOS AS b ON a.id_producto=b.id;', [],showCartSuccess, errorCB);
+    }, errorCB);
+    return retur;
+};
+
+var showCartSuccess = function(tx, results) {
+    if (results.rows !== undefined) {
+        var len = results.rows.length;
+        var total = 0;
+        $('#tableContent tr').remove();
+        for (var i = 0; i < len; i++) {
+            var row = results.rows.item(i);
+            var importe = row.precio * row.cantidad;
+            total += importe;
+            $('#tableContent').append($('<tr/>', {
+            }).append($('<td/>', {
+            }).append('<img src="' + row.imagen + '" style = "width: 100%;max-width:200px; "/>')
+                    .append($('<p/>', {
+                'id': 'productName',
+                'text': row.nombre
+            }))).append($('<td/>', {
+                'class': 'ui-table-cell-label',
+                'text': row.cantidad
+            })).append($('<td/>', {
+                'class': 'ui-table-cell-label',
+                'text': row.precio
+            })).append($('<td/>', {
+                'class': 'ui-table-cell-label',
+                'text': importe
+            })).append($('<td/>', {}).append($('<div/>', {
+                'data-role': 'button',
+                'data-corners': 'true',
+                'data-shadow': 'true',
+                'data-iconshadow': 'true',
+                'data-wrapperels': 'span',
+                'data-theme': 'b',
+                'class': 'ui-btn ui-shadow ui-btn-corner-all ui-btn-up-b',
+                'onclick': 'eliminarProducto(' + row.id + ')'
+            }).append($('<span/>', {'class': 'ui-btn-inner'}).append($('<span/>', {
+                'class': 'ui-btn-text',
+                'text': 'Eliminar',
+                'value': row.id
+            }))))));
+        }
+        updatePuntos(total);
+        $("#total").text(total);
+        $("#mytable").table("refresh");
+    }
+    function updatePuntos(total) {
+        var puntos = sesion.get("puntos");
+        var actuales = puntos.actuales;
+        var dispobibles = actuales - total;
+        puntos.disponibles = dispobibles;
+        sesion.sets("puntos", puntos);
+        $('#disponibles').text(dispobibles);
+    }
+    ;
+};
+var dropproduct = function(idproducto) {
+    db.transaction(function(tx) {
+        tx.executeSql('DELETE FROM CARRITO WHERE id=?', [idproducto], function(tx, result) {
+            showCart();
+        }, errorCB);
+    }, errorCB);
+};

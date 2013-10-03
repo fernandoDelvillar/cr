@@ -26,16 +26,18 @@
         <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"/>
         <link rel="stylesheet" href="css/jquery.mobile.structure-1.3.2.min.css" />
         <link rel="stylesheet" href="css/jquery.mobile.theme-1.3.2.min.css" />
+        <link rel="stylesheet" href="css/royal.css" />
         <script src="js/jquery-1.10.2.min.js"></script>
         <script src="js/jquery.mobile-1.3.2.min.js"></script>
+        <script src="js/BdLocal.js"></script>
+        <script src="js/sesion.js"></script>
         <title>Club Royal</title>
-        <link rel="stylesheet" href="css/royal.css" />
     </head>
     <body>
         <section data-role="page" data-title="categoria" data-theme="b" id="categoria" data-add-back-btn="true" class="ui-responsive-panel">
-
-            <div data-role="header" data-theme="a" >
-                <a href="categoria.html" data-icon="back" >Atr&aacute;s</a>
+            <div data-role="header" data-theme="a" id="header">
+                <a href="#" id="back" data-rel="back" data-icon="back" >Atr&aacute;s</a>
+                <div style="visibility: hidden" id="redirect"></div>
                 <h1>Cat&aacute;logo</h1>
                 <img align="right" id="logohead" src="img/logohead.png" onclick="goHome()" >
                 <div data-role="navbar" data-iconpos="left" data-theme="c">
@@ -48,37 +50,38 @@
             <section data-role="content">
                 <div style="">
                     <a class="" href="">
-                        <span class="mini"> 20 </span><span class="mini-bag item-count">&nbsp;</span>
+                        <span class="mini" id="disponibles"></span><span class="mini-bag item-count">&nbsp;</span>
                     </a>
                 </div>
                 <br/>
                 <br/>
-                <h1>Tienda Camping "Adventure"</h1>
-                <div class="ui-grid-a my-breakpoint">
-                    <div class="ui-block-a"><div class="ui-body ui-body-d"><img src="img/max/ALLY-27-12-347.jpg"/></div></div>
+                <h1 id="productName"></h1>
+                <div class="ui-grid-a my-breakpoint" id="producto">
+                    <div class="ui-block-a"><div class="ui-body ui-body-d" id="image"></div></div>
                     <div class="ui-block-b"><div class="ui-body ui-body-d">
                             <div id="valor"> <span style="line-height: 50px;
                                                    color: darkmagenta;
                                                    font-size: 140%;
-                                                   font-weight: bold;">Valor:</span>  <span class="mini"> 200 </span><span class="mini-bag item-count">&nbsp;</span></div>
-                            <h2>ALLY-27-12-347</h2>
-                            <p>190 x 100 x 106 cm. Con protector UV solar y barras de fibra. Incluye bolsa contenedora.</p>
+                                                   font-weight: bold; width: 100%;">Valor:</span>  <span class="mini" id="precio"></span><span class="mini-bag item-count">&nbsp;</span></div>
+                            <h2 id="sku"></h2>
+                            <p id="descripcion"></p>
                             <div data-mini="true" data-type="horizontal" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-horizontal ui-mini" aria-disabled="false" data-disabled="false" data-shadow="false" data-corners="true" data-exclude-invisible="true" data-init-selector=":jqmData(role='controlgroup')">
                                 <div class="ui-controlgroup-controls">
                                     <p style="margin: 0px;"><label class="quantity_box" for="quantity313">Cantidad:&nbsp;</label>
                                         <input type="text" value="1" name="quantity[]" id="quantity313" size="4" class="inputboxquantity"></p>   
                                     <a data-theme="b" data-icon="plus" data-role="button" href="#" onclick="var qty_el = document.getElementById('quantity313');
-                                            var qty = qty_el.value;
-                                            if (!isNaN(qty))
-                                                qty_el.value++;
-                                            return false;" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-first-child ui-btn-up-b"><span class="ui-btn-inner"><span class="ui-btn-text">A&ntilde;adir</span><span class="ui-icon ui-icon-plus ui-icon-shadow">&nbsp;</span></span></a>
+                        var qty = qty_el.value;
+                        if (!isNaN(qty))
+                            qty_el.value++;
+                        return false;" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-first-child ui-btn-up-b"><span class="ui-btn-inner"><span class="ui-btn-text">A&ntilde;adir</span><span class="ui-icon ui-icon-plus ui-icon-shadow">&nbsp;</span></span></a>
                                     <a data-theme="b" data-icon="delete" data-role="button" href="#" onclick="var qty_el = document.getElementById('quantity313');
-                                            var qty = qty_el.value;
-                                            if (!isNaN(qty) && qty > 0)
-                                                qty_el.value--;
-                                            return false;" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-b"><span class="ui-btn-inner"><span class="ui-btn-text">Eliminar</span><span class="ui-icon ui-icon-delete ui-icon-shadow">&nbsp;</span></span></a>
+                        var qty = qty_el.value;
+                        if (!isNaN(qty) && qty > 1)
+                            qty_el.value--;
+                        return false;" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-b"><span class="ui-btn-inner"><span class="ui-btn-text">Eliminar</span><span class="ui-icon ui-icon-delete ui-icon-shadow">&nbsp;</span></span></a>
                                 </div></div>
-                            <a data-role="button" href="carrito.html" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c"><span class="ui-btn-inner"><span class="ui-btn-text">Confirmar</span></span></a>
+                            <!--                            <div data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" id="confirmar"><span class="ui-btn-inner"><span class="ui-btn-text">Confirmar</span></span></div>-->
+                            <div data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" id="confirmar1"><span class="ui-btn-inner"><span class="ui-btn-text">Confirmar</span></span></div>
                             <div id="leyen">En caso que se agote la existencia de alguno de los productos, ser&aacute; sustituido por otro con caracter&iacute;sticas y valor similar.</div>                                     
                         </div>
                     </div>
@@ -92,26 +95,41 @@
                         T&eacute;rminos y condiciones de uso.  Aviso de Privacidad.</p></div>
             </footer>
             <div data-role="panel" data-position-fixed="true" data-theme="a" id="nav-panel">
-                <ul data-role="listview" data-theme="a" class="nav-search">
-                    <li data-icon="delete"><a href="#" data-rel="close">Cerrar Men&uacute;</a></li>
-                    <li><a href="categoria.html" ><h2>Art&iacute;culos de Viaje</h2></a></li>
-                    <li><a href="#categoria" ><h2>Aventura al aire libre</h2></a></li>
-                    <li><a href="#categoria" ><h2>Decoraci&oacute;n y hogar</h2></a></li>
-                    <li><a href="#categoria" ><h2>Entretenimiento</h2></a></li>
-                    <li><a href="#categoria" ><h2>Para &Eacute;l</h2></a></li>
-                    <li><a href="#categoria" ><h2>Para Ella</h2></a></li>
-                    <li><a href="#categoria" ><h2>Ni&ntilde;os y beb&eacute;s</h2></a></li>
-                    <li><a href="#categoria" ><h2>Experiencias</h2></a></li>
-                    <li><a href="#categoria" ><h2>L&iacute;nea Blanca</h2></a></li>
-                    <li><a href="#categoria" ><h2>Tecnolog&iacute;a</h2></a></li>
-                    <li><a href="#categoria" ><h2>Salud y Belleza</h2></a></li>
+                <ul data-role="listview" data-theme="a" class="nav-search" id="panelCategoria">
                 </ul>
             </div> 
+            <script type="text/javascript">
+
+                    $(document).on("pageinit", function() {
+                        $.mobile.defaultPageTransition = "none";
+                    });
+                    var idproducto = getUrlVars()["id"];
+                    getProductoInfo(idproducto);
+                    $('#confirmar1').click(function() {
+                        var disponibles = sesion.get('puntos').disponibles;                        
+                        var cantidad = $('#quantity313').val();
+                        var precio = $('#precio').text();
+                        var subtotal = precio * cantidad;
+                        if (disponibles !== undefined) {
+                            if (disponibles >= subtotal && subtotal !== 0) {
+                                addCart(idproducto, cantidad);
+                            }else{
+                                alert("Puntos insuficientes");
+                            }
+                            $.mobile.changePage("carrito.html", {});
+                        } else {
+                            alert("Sesión expirada\n\nPor favor vuelve a iniciar sesión");
+                            $.mobile.changePage("login.html", {transition: "none", changeHash: false});
+                        }
+                    });
+                    var getUrlVars = function() {
+                        var vars = {};
+                        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
+                            vars[key] = value;
+                        });
+                        return vars;
+                    };
+            </script>
         </section>
-        <script type="text/javascript">
-            function goHome(){
-                $.mobile.changePage("home.html", {transition: "none",changeHash: true});
-            };
-        </script>
     </body>
 </html>
