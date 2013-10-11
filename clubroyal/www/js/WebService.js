@@ -1,6 +1,6 @@
 
 var wsUrl = "http://adventasoluciones.com.mx/detallistas/public/wsdl/index/soap";
-//var wsUrl = "http://localhost/adccmdev/public/wsdl/index/soap";
+var wsUrl = "http://localhost/adccmdev/public/wsdl/index/soap";
 $.mobile.allowCrossDomainPages = true;
 $.support.cors = true;
 
@@ -34,6 +34,8 @@ var canlogin = function() {
                 puntos.disponibles = puntos.actuales;
                 sesion.sets("puntos", puntos);
                 $.mobile.changePage("home.html");
+            } else {
+                alert("No se puede iniciar sesión\nUsuario y/o contraseña incorrectos\n\nFavor de verificarlos");
             }
         } else {
             alert("no sucess");
