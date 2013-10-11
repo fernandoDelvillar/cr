@@ -80,12 +80,17 @@
             <script type="text/javascript" src="js/WebService.js"></script>            
             <script type="text/javascript" src="js/BdLocal.js"></script>            
             <script type="text/javascript">
-            app.initialize();
+//                            app.initialize();
                             $(document).on("pageinit", function() {
                                 $.mobile.defaultPageTransition = "none";
                             });
-//                            sesion.clear();
-//                            creaDB();
+                            document.addEventListener('deviceready', function() {
+                                alert("init");
+                                sesion.clear();
+                                alert("sesion was crleanded ");
+                                creaDB();
+                                alert("database was crleanded ");
+                            }, false);
             </script>
         </div>
     </body>

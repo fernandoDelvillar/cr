@@ -2,7 +2,9 @@ var db = window.openDatabase("ClubRoyalDatabase", "1.0", "Club Royal", 30 * 1024
 var ItemId = 0;
 var productos = [];
 var creaDB = function() {
+    alert("d1");
     db.transaction(creaTablas, errorSql, creaDBSuccess);
+    alert("d21");
 };
 var creaTablas = function(tx) {
     creaTablaCategorias(tx);

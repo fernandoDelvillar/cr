@@ -35,7 +35,7 @@ var app = {
     onDeviceReady: function() {
         sesion.clear();
         creaDB();
-    },
+    }
 };
 /*$("#signin").bind("click", function(event) {
  canlogin();
