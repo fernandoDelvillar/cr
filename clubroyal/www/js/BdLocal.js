@@ -1,12 +1,12 @@
-var db = window.openDatabase("Database", "1.0", "Club Royal", 30 * 1024);
+var db = window.openDatabase("ClubRoyalDatabase", "1.0", "Club Royal", 30 * 1024);
 var ItemId = 0;
-var CreaDB = function() {
-    db.transaction(CreaTablas, errorCB, successCB);
+var productos = [];
+var creaDB = function() {
+    db.transaction(creaTablas, errorSql, creaDBSuccess);
 };
-var CreaTablas = function(tx) {
+var creaTablas = function(tx) {
     creaTablaCategorias(tx);
     creaTablaProductos(tx);
-//    creaTablaSesion(tx);
     creaTablaCarrito(tx);
 };
 var creaTablaCategorias = function(tx) {
@@ -29,27 +29,24 @@ var creaTablaProductos = function(tx) {
     tx.executeSql('CREATE TABLE IF NOT EXISTS PRODUCTOS("id" INTEGER PRIMARY KEY,"id_categoria" INTEGER,"nombre" CHAR(20) NOT NULL, "descripcion" TEXT NOT NULL,"sku" CHAR(15) NOT NULL, "precio" INTEGER, "imagen" TEXT NOT NULL, "estatus" INTEGER NOT NULL)');
     tx.executeSql('INSERT INTO PRODUCTOS ("id","id_categoria","nombre","descripcion","sku","precio","imagen","estatus") VALUES (1,1,\'Tienda Camping "Adventure"\',"190 x 100 x 106 cm. Con protector UV solar y barras de fibra. Incluye bolsa contenedora.","ALLY-27-12-347",200,"img/max/ALLY-27-12-347.jpg",1);');
 };
-var creaTablaSesion = function(tx) {
-//    tx.executeSql('DROP TABLE IF EXISTS SESION');
-//    tx.executeSql('CREATE TABLE IF NOT EXISTS SESION("id" INTEGER PRIMARY KEY,"id_user" INTEGER,"nombre" CHAR(20) NOT NULL, "descripcion" TEXT NOT NULL,"sku" CHAR(15) NOT NULL, "precio" INTEGER, "imagen" TEXT NOT NULL, "estatus" INTEGER NOT NULL)');
-//    tx.executeSql('INSERT INTO PRODUCTOS ("id","id_categoria","nombre","descripcion","sku","imagen","precio","estatus") VALUES (1,1,"Tienda Camping \"Adventure\"","190 x 100 x 106 cm. Con protector UV solar y barras de fibra. Incluye bolsa contenedora.","ALLY-27-12-347",200,"img/max/ALLY-27-12-347.jpg",1);');
-};
 var creaTablaCarrito = function(tx) {
     tx.executeSql('DROP TABLE IF EXISTS CARRITO');
     tx.executeSql('CREATE TABLE IF NOT EXISTS CARRITO("id" INTEGER PRIMARY KEY,"id_producto" INTEGER,"cantidad" INTEGER)');
 };
-var errorCB = function(err) {
+var errorSql = function(error) {
 // Esto se puede ir a un Log de Error diría el purista de la oficina, pero como este es un ejemplo pongo el MessageBox.Show :P
-    $.mobile.changePage("index.html");
+//    alert("No se puede inicializar la App");
+    if (error.code == error.DATABASE_ERR)
+        alert('nasty database error');
 };
-var successCB = function() {
+var creaDBSuccess = function() {
     return true;
 };
 var getCategorias = function() {
-    return db.transaction(queryCategorias, errorCB);
+    return db.transaction(queryCategorias, errorSql);
 };
 var queryCategorias = function(tx) {
-    tx.executeSql('SELECT * FROM CATEGORIAS WHERE estatus=1;', [], categoriasSuccess, errorCB);
+    tx.executeSql('SELECT * FROM CATEGORIAS WHERE estatus=1;', [], categoriasSuccess, errorSql);
 };
 var categoriasSuccess = function(tx, results) {
     if (results.rows.length !== undefined) {
@@ -66,8 +63,9 @@ var llenaCategoria = function(results) {
         $('#menucat').append($('<li/>', {//here appending `<li>`
         }).append($('<a/>', {//here appending `<a>` into `<li>`
             'href': 'categoria.html?id=' + row.id,
+        }).append($('<h2/>', {//here appending `<a>` into `<li>`
             'text': row.nombre
-        }).prepend('<img src="' + row.imagen + '"/>')));
+        })).prepend('<img src="' + row.imagen + '"/>')));
     }
     $('#menucat').listview('refresh');
 };
@@ -84,8 +82,9 @@ var llenaCategoriaHigh = function(results) {
         $('#menucat' + id).append($('<li/>', {//here appending `<li>`
         }).append($('<a/>', {//here appending `<a>` into `<li>`
             'href': 'categoria.html?id=' + row.id,
+        }).append($('<h2/>', {//here appending `<a>` into `<li>`
             'text': row.nombre
-        }).prepend('<img src="' + row.imagen + '"/>')));
+        })).prepend('<img src="' + row.imagen + '"/>')));
     }
     $('#menucat1').listview('refresh');
     $('#menucat2').listview('refresh');
@@ -103,25 +102,25 @@ var llenaPanel = function(results) {
     }
     $('#panelCategoria').listview('refresh');
 };
-
 var getProductos = function(categoriaID) {
-    getCategorias();
+//    getCategorias();
     if (undefined !== categoriaID) {
-        return db.transaction(function(tx) {
-            tx.executeSql('SELECT * FROM PRODUCTOS WHERE id_categoria=' + categoriaID + ' AND estatus=1;', [], productosSuccess, errorCB);
-        }, errorCB);
+        db.transaction(function(tx) {
+            tx.executeSql('SELECT a.*, b.nombre AS `categoria` FROM PRODUCTOS AS `a` INNER JOIN CATEGORIAS AS `b` ON b.id=a.id_categoria WHERE a.id_categoria=? AND a.estatus=?;', [categoriaID, 1], productosSuccess, errorSql);
+        }, errorSql);
     }
 };
 var productosSuccess = function(tx, results) {
     if (results.rows !== undefined) {
         var len = results.rows.length;
+        var row;
         $('#productos').remove('div');
-        $('#catcontent').append($('<div/>', {
+        $('#productsContent').append($('<div/>', {
             'id': 'productos',
             'class': 'ui-grid-c my-breakpoint'
         }));
         for (var i = 0; i < len; i++) {
-            var row = results.rows.item(i);
+            row = results.rows.item(i);
             $('#productos').append($('<div/>', {
                 'class': 'ui-block-a'
             }).append($('<div/>', {//here appending `<a>` into `<li>`
@@ -130,13 +129,15 @@ var productosSuccess = function(tx, results) {
                 'href': 'producto.html?id=' + row.id
             }).prepend('<img src="' + row.imagen + '"/>'))));
         }
+        $('#categoryName').text(row.categoria);
+        $('#productos').table("refresh");
     }
 };
 var getProductoInfo = function(productoID) {
     if (productoID !== undefined) {
         return db.transaction(function(tx) {
-            tx.executeSql('SELECT * FROM PRODUCTOS WHERE id=' + productoID + ' AND estatus=1;', [], productoInfoSuccess, errorCB);
-        }, errorCB);
+            tx.executeSql('SELECT * FROM PRODUCTOS WHERE id=? AND estatus=?;', [productoID, 1], productoInfoSuccess, errorSql);
+        }, errorSql);
     }
 };
 var productoInfoSuccess = function(tx, results) {
@@ -152,22 +153,19 @@ var productoInfoSuccess = function(tx, results) {
         }
     }
 };
-
 var addCart = function(idProducto, cantidad) {
     db.transaction(function(tx) {
         tx.executeSql('INSERT INTO CARRITO ("id_producto","cantidad") VALUES (?,?)', [idProducto, cantidad], function(tx, result) {
-        }, errorCB);
-    }, errorCB);
+        }, errorSql);
+    }, errorSql);
 };
-
 var showCart = function() {
-    var retur=null;
+    var retur = null;
     db.transaction(function(tx) {
-        tx.executeSql('SELECT * FROM CARRITO AS a INNER JOIN PRODUCTOS AS b ON a.id_producto=b.id;', [],showCartSuccess, errorCB);
-    }, errorCB);
+        tx.executeSql('SELECT * FROM CARRITO AS a INNER JOIN PRODUCTOS AS b ON a.id_producto=b.id;', [], showCartSuccess, errorSql);
+    }, errorSql);
     return retur;
 };
-
 var showCartSuccess = function(tx, results) {
     if (results.rows !== undefined) {
         var len = results.rows.length;
@@ -177,9 +175,8 @@ var showCartSuccess = function(tx, results) {
             var row = results.rows.item(i);
             var importe = row.precio * row.cantidad;
             total += importe;
-            $('#tableContent').append($('<tr/>', {
-            }).append($('<td/>', {
-            }).append('<img src="' + row.imagen + '" style = "width: 100%;max-width:200px; "/>')
+            $('#tableContent').append($('<tr/>').append($('<td/>').
+                    append('<img src="' + row.imagen + '" style = "width: 100%;max-width:200px; "/>')
                     .append($('<p/>', {
                 'id': 'productName',
                 'text': row.nombre
@@ -206,6 +203,7 @@ var showCartSuccess = function(tx, results) {
                 'text': 'Eliminar',
                 'value': row.id
             }))))));
+            productos.push({'id': row.id, idproduct: row.id_producto, cant: row.cantidad, importe: importe});
         }
         updatePuntos(total);
         $("#total").text(total);
@@ -225,6 +223,15 @@ var dropproduct = function(idproducto) {
     db.transaction(function(tx) {
         tx.executeSql('DELETE FROM CARRITO WHERE id=?', [idproducto], function(tx, result) {
             showCart();
-        }, errorCB);
-    }, errorCB);
+        }, errorSql);
+    }, errorSql);
+};
+var vaceaCarrito = function() {
+    db.transaction(function(tx) {
+        tx.executeSql('DELETE FROM CARRITO WHERE 1', [], function(tx, result) {
+        }, errorSql);
+    }, errorSql);
+};
+var getCartContent = function() {
+    return productos;
 };

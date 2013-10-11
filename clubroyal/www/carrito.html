@@ -24,15 +24,12 @@
         <link rel="shortcut icon" href="favicon.ico">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"/>
-        <link rel="stylesheet" href="css/jquery.mobile.structure-1.3.2.min.css" />
-        <link rel="stylesheet" href="css/jquery.mobile.theme-1.3.2.min.css" />
-        <link rel="stylesheet" href="css/jquery.mobile.simpledialog.min.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.custom,structure.min.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.custom.theme.min.css" />
         <link rel="stylesheet" href="css/royal.css" />
         <script src="js/jquery-1.10.2.min.js"></script>
         <script src="js/jquery.mobile-1.3.2.min.js"></script>
         <script src="js/jquery.mobile.simpledialog2.min"></script>
-        <script src="js/BdLocal.js"></script>
-        <script src="js/sesion.js"></script>
         <title>Club Royal</title>
     </head>
     <body>
@@ -45,7 +42,8 @@
                 <div data-role="navbar" data-iconpos="left" data-theme="c">
                     <ul>
                         <li style="width: 25%;overflow:hidden;"><a class=" ui-btn-icon-left" data-icon="grid" href="#nav-panel" data-corners="false" data-shadow="false" data-iconshadow="true" data-inline="false" data-wrapperels="span" data-iconpos="bottom">Categor&iacute;as</a></li>
-                        <li style="width: 75%;"><a href="#" style="cursor:default;">Aventura al aire libre</a></li>
+                        <li style="width: 50%;"><a href="#" style="cursor:default;">Aventura al aire libre</a></li>
+                        <li style="width: 25%;"><a href="home.html" style="cursor:default;">Regresar al Menú principal</a></li>
                     </ul>
                 </div>
             </div>
@@ -94,25 +92,48 @@
                 <ul data-role="listview" data-theme="a" class="nav-search" id="panelCategoria">
                 </ul>
             </div> 
+            <div id="temporalEdgar"></div>
             <div id="confirm"></div>
+            <script src="js/BdLocal.js"></script>
+            <script src="js/sesion.js"></script>
+            <script src="js/WebService.js"></script>
             <script type="text/javascript">
+
 //                $(this).bind('pageshow', function() {
 //                        getCategorias();                
-                $("#carrito").on('pageshow', function() {
-                    alert(showCart());
+                $("#carrito").bind('pageshow', function() {
+                    showCart();
+//                    getCategorias();
 //                    var puntos = sesion.get('puntos').actuales;
 //                    $("#disponibles").text(puntos);
                 });
+                $("#carrito").bind('pagebeforeshow', function() {
+
+//                    $("#temporalEdgar").text(JSON.stringify(getProducts()));
+                });
+
                 var eliminarProducto = function(idProducto) {
-                    alert(idProducto);
                     if (confirm("¿Realmente quiere eliminar el artículo seleccionado?")) {
                         dropproduct(idProducto);
                     }
                 };
                 $("#canjear").on('click', function() {
                     var puntos = sesion.get("puntos");
-                    var actuales
-                    
+                    var actuales = puntos.actuales;
+                    var disponibles = puntos.disponibles;
+                    if (actuales !== undefined) {
+                        var total = actuales - disponibles;
+                        if (total > 0) {
+                            var cliente = "T301";
+                            var respuesta = sendCanje(getCartContent(), cliente, total);
+                            alert(respuesta);
+                        }else{
+                            alert("Tu carrito de compras está vacio \nFavor de agregar productos");
+                        }
+                    } else {
+                        alert("Sesión expirada\nFavor de volver a ingresar");
+                        $.mobile.changePage("login.html", {});
+                    }
                 });
             </script>
         </section>

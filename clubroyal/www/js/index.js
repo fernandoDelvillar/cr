@@ -33,7 +33,23 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        CreaDB();
-        
+        sesion.clear();
+        creaDB();
+        document.getElementById("signin")
+                .addEventListener("click", function() {
+            alert("asdadasdas");
+        }, false);
     },
+    signIn: function() {
+        alert("sdaas");
+        canlogin();
+    }
 };
+/*$("#signin").bind("click", function(event) {
+ canlogin();
+ });
+ $(document).on("pageinit", function() {
+ $.mobile.defaultPageTransition = "none";
+ sesion.clear();
+ CreaDB();
+ });*/

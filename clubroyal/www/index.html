@@ -26,9 +26,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-        <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"/>
-        <link rel="stylesheet" href="css/jquery.mobile.structure-1.3.2.min.css" />
-        <link rel="stylesheet" href="css/jquery.mobile.theme-1.3.2.min.css" />
+        <!--<link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"/>-->
+        <link rel="stylesheet" href="css/jquery.mobile.custom.structure.min.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.custom.theme.min.css" />
         <link rel="stylesheet" href="css/royal.css" />
 
         <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
@@ -37,12 +37,11 @@
         <title>Club Royal</title>
     </head>
     <body>
-        <div data-role="page"  data-title="scrollable" data-theme="b" class="scrollable">
+        <div data-role="page"  data-theme="b" class="scrollable">
             <header data-role="header" style="background:none;border: none;">
                 <center><img id="logo" src="img/logo.png"></center>
             </header>
-            <section data-role="content" data-position="relative">
-                <a href="loading.html" id="loading" data-rel="dialog" ></a>
+            <section data-role="content" data-position="relative">                
                 <center>
                     <form action="" name="login" method="post">
                         <div data-role="fieldcontain" data-position="relative">
@@ -62,7 +61,7 @@
 
                         <!--p><a href="#home" ="pop">Next</a></p>
                         <p><a href="index2.html">Change Theme</a></p buildIt() logIn()-->
-                        <input  type="button" onclick="canlogin()" data-inline="true" data-theme="a" value="Entrar" />
+                        <input  type="button" id="signin" data-inline="true" data-theme="a" value="Entrar" />
                     </form>
                 </center>
             </section>
@@ -76,18 +75,17 @@
                 </div>
             </footer>
             <script type="text/javascript" src="phonegap.js"></script>
-            <script type="text/javascript" src="js/index.js"></script>
             <script type="text/javascript" src="js/jquery.base64.js"></script>
             <script type="text/javascript" src="js/sesion.js"></script>            
             <script type="text/javascript" src="js/WebService.js"></script>            
             <script type="text/javascript" src="js/BdLocal.js"></script>            
             <script type="text/javascript">
-//            app.initialize();
+            app.initialize();
                             $(document).on("pageinit", function() {
                                 $.mobile.defaultPageTransition = "none";
                             });
-                            sesion.clear();
-                            CreaDB();
+//                            sesion.clear();
+//                            creaDB();
             </script>
         </div>
     </body>

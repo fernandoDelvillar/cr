@@ -43,7 +43,7 @@
                 <div data-role="navbar" data-iconpos="left" data-theme="c">
                     <ul>
                         <li style="width: 25%;overflow:hidden;"><a class=" ui-btn-icon-left" data-icon="grid" href="#nav-panel" data-corners="false" data-shadow="false" data-iconshadow="true" data-inline="false" data-wrapperels="span" data-iconpos="bottom">Categor&iacute;as</a></li>
-                        <li style="width: 75%;"><a href="#" style="cursor:default;">Aventura al aire libre</a></li>
+                        <li style="width: 75%;"><a href="#" style="cursor:default;">Información de producto</a></li>
                     </ul>
                 </div>
             </div>
@@ -86,6 +86,12 @@
                         </div>
                     </div>
                 </div>
+                <div data-role="navbar" data-iconpos="left" data-theme="a">
+                    <ul>
+                        <li style="width: 50%;"><a href="home.html">Regresar al menú principal</a></li>
+                        <li style="width: 50%;"> <a href="carrito.html"> Ir a carrito de compras</a></li>
+                    </ul>
+                </div>
             </section>
             <footer data-role="footer"  data-position="fixed">
                 <div id="fot">
@@ -100,20 +106,20 @@
             </div> 
             <script type="text/javascript">
 
-                    $(document).on("pageinit", function() {
+                    $(document).bind("pageinit", function() {
                         $.mobile.defaultPageTransition = "none";
                     });
                     var idproducto = getUrlVars()["id"];
                     getProductoInfo(idproducto);
                     $('#confirmar1').click(function() {
-                        var disponibles = sesion.get('puntos').disponibles;                        
+                        var disponibles = sesion.get('puntos').disponibles;
                         var cantidad = $('#quantity313').val();
                         var precio = $('#precio').text();
                         var subtotal = precio * cantidad;
                         if (disponibles !== undefined) {
                             if (disponibles >= subtotal && subtotal !== 0) {
                                 addCart(idproducto, cantidad);
-                            }else{
+                            } else {
                                 alert("Puntos insuficientes");
                             }
                             $.mobile.changePage("carrito.html", {});
