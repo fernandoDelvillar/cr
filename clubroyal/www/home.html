@@ -55,28 +55,26 @@
                 });
             });
         </script>
-        <div data-role="page"  data-title="scrollable" data-theme="b" class="scrollable">
-            <section data-role="content" data-position="relative">
+        <div data-role="page" data-theme="b" class="scrollable" id="home">
+            <section data-role="content" data-position="relative" id="home_header">
                 <header data-role="header" style="background:none;border: none;">
                     <center><img id="logo" src="img/logo.png"></center>
                 </header>
-                <section data-role="content">
-                    <div class="">
+                <section data-role="content" id="home_content">
+                    <div class="" id="home_option">
                         <h1> Porfavor elige una opción.</h1>
                         <ul data-role="listview" data-inset="true" data-theme="d" id="mainMenu" >
                             <li><a href="catalogo.html" > <img src="img/premios.png"/> <h2> Premios</h2> <p> Elige tu premio</p></a></li>
                             <li><a href="estadocta.html" > <img src="img/cuenta.png"/> <h2> Mi cuenta </h2> <p> Revisa tu estado de cuenta </p> </a></li>
                             <li><a href="#pedidos" > <img src="img/pedidos.png"/> <h2> Pedidos</h2> <p> Revisa tus pedidos realizados </p> </a></li>
-                            <li><a href="index.html" > <img src="img/salir.png"/> <h2> Salir</h2><p> !Regresa muy pronto! </p> </a></li>
+                            <li><a href="main.html" > <img src="img/salir.png"/> <h2> Salir</h2><p> !Regresa muy pronto! </p> </a></li>
                         </ul>
                     </div>
                     <br>
                     <br>
                 </section>
-
-
-                <footer data-role="footer" data-position="fixed" data-tap-toggle="true">
-                    <div data-role="navbar">
+                <footer data-role="footer" data-position="fixed" data-tap-toggle="true" id="home_footer">
+                    <div data-role="navbar" id="home_navbar">
                         <img id="logofot1" src="img/adventa.png">     <img id="logofot2" src="img/adbox.png">   
                         <p>D.R.<abbr lang="en" title="Copyright"> &copy; </abbr>Copyright 2013.  Derechos Reservados.  Adventa y Adbox son marcas registradas de Publigraphics S.A. de C.V. 
                             Quedan reservados todos los derechos de edición,  copia o reproducción parcial o total.

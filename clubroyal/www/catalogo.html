@@ -34,7 +34,7 @@
         <title>Club Royal</title>
     </head>
     <body>
-        <div data-role="page" data-theme="b" class="scrollable">
+        <div data-role="page" data-theme="b" class="scrollable" id="catalogo">
             <section data-role="content" data-position="relative">
                 <div data-role="header" data-theme="a">
                     <a href="home.html" data-icon="back" >Atr&aacute;s</a>
@@ -100,7 +100,7 @@
                     $(document).on("pageinit", function() {
                         $.mobile.defaultPageTransition = "none";
                     });
-                    $(this).on("pageshow", function() {
+                    $("#catalogo").bind("pageshow", function() {
                         getCategorias();
                         var disponibles = sesion.get('puntos').disponibles;
                         if (disponibles !== undefined) {

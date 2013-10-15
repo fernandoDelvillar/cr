@@ -2,9 +2,7 @@ var db = window.openDatabase("ClubRoyalDatabase", "1.0", "Club Royal", 30 * 1024
 var ItemId = 0;
 var productos = [];
 var creaDB = function() {
-    alert("d1");
     db.transaction(creaTablas, errorSql, creaDBSuccess);
-    alert("d21");
 };
 var creaTablas = function(tx) {
     creaTablaCategorias(tx);
@@ -45,64 +43,65 @@ var creaDBSuccess = function() {
     return true;
 };
 var getCategorias = function() {
-    return db.transaction(queryCategorias, errorSql);
+    db.transaction(function(tx) {
+        tx.executeSql('SELECT * FROM CATEGORIAS WHERE estatus=1;', [],
+                function(tx, results) {
+                    if (results.rows.length !== undefined) {
+                        llenaCategoriasMin(results);
+                        llenaCategoriaHigh(results);
+                    }
+                }
+        , errorSql);
+    }, errorSql);
 };
-var queryCategorias = function(tx) {
-    tx.executeSql('SELECT * FROM CATEGORIAS WHERE estatus=1;', [], categoriasSuccess, errorSql);
+var getPanelCategorias = function() {
+    db.transaction(function(tx) {
+        tx.executeSql('SELECT * FROM CATEGORIAS WHERE estatus=1;', [],
+                function(tx, results) {
+                    if (results.rows.length !== undefined) {
+                        llenaPanelCategorias(results);
+                    }
+                }
+        , errorSql);
+    }, errorSql);
 };
-var categoriasSuccess = function(tx, results) {
-    if (results.rows.length !== undefined) {
-        llenaCategoria(results);
-        llenaCategoriaHigh(results);
-        llenaPanel(results);
-    }
-};
-var llenaCategoria = function(results) {
+var llenaCategoriasMin = function(results) {
     var len = results.rows.length;
-    $('#menucat').children().remove('li');
+    var html = '';
     for (var i = 0; i < len; i++) {
         var row = results.rows.item(i);
-        $('#menucat').append($('<li/>', {//here appending `<li>`
-        }).append($('<a/>', {//here appending `<a>` into `<li>`
-            'href': 'categoria.html?id=' + row.id,
-        }).append($('<h2/>', {//here appending `<a>` into `<li>`
-            'text': row.nombre
-        })).prepend('<img src="' + row.imagen + '"/>')));
+        html += '<li><a href="categoria.html?id=' + row.id + '"<h2>'
+                + row.nombre + '</h2><img src="' + row.imagen + '"/></a></li>';
     }
-    $('#menucat').listview('refresh');
+    $('#menucat').html(html).listview('refresh');
 };
 var llenaCategoriaHigh = function(results) {
     var len = results.rows.length;
-    var id = 1;
-    $('#menucat1').children().remove('li');
-    $('#menucat2').children().remove('li');
+    var html1 = '';
+    var html2 = '';
     for (var i = 0; i < len; i++) {
+        var row = results.rows.item(i);
         if (i > 5) {
-            id = 2;
+            html2 += '<li><a href="categoria.html?id=' + row.id + '"><h2>'
+                    + row.nombre + '</h2><img src="' + row.imagen + '"/></a></li>';
+
+        } else {
+            html1 += '<li><a href="categoria.html?id=' + row.id + '"><h2>'
+                    + row.nombre + '</h2><img src="' + row.imagen + '"/></a></li>';
+
         }
-        var row = results.rows.item(i);
-        $('#menucat' + id).append($('<li/>', {//here appending `<li>`
-        }).append($('<a/>', {//here appending `<a>` into `<li>`
-            'href': 'categoria.html?id=' + row.id,
-        }).append($('<h2/>', {//here appending `<a>` into `<li>`
-            'text': row.nombre
-        })).prepend('<img src="' + row.imagen + '"/>')));
     }
-    $('#menucat1').listview('refresh');
-    $('#menucat2').listview('refresh');
+    $('#menucat1').html(html1).listview('refresh');
+    $('#menucat2').html(html2).listview('refresh');
 };
-var llenaPanel = function(results) {
-    $('#panelCategoria').children().remove('li');
+var llenaPanelCategorias = function(results) {
     var len = results.rows.length;
+    var html = '';
     for (var i = 0; i < len; i++) {
         var row = results.rows.item(i);
-        $('#panelCategoria').append($('<li/>', {//here appending `<li>`
-        }).append($('<a/>', {//here appending `<a>` into `<li>`
-            'href': 'categoria.html?id=' + row.id,
-            'text': row.nombre
-        })));
+        html += '<li><a href="categoria.html?id=' + row.id + '">' + row.nombre + '</a></li>';
     }
-    $('#panelCategoria').listview('refresh');
+    $('#panelCategoria').html(html).listview('refresh');
 };
 var getProductos = function(categoriaID) {
 //    getCategorias();
@@ -116,23 +115,17 @@ var productosSuccess = function(tx, results) {
     if (results.rows !== undefined) {
         var len = results.rows.length;
         var row;
-        $('#productos').remove('div');
-        $('#productsContent').append($('<div/>', {
-            'id': 'productos',
-            'class': 'ui-grid-c my-breakpoint'
-        }));
+//        $('#productos').remove('div');
+        var html = '<div id="productos" class="ui-grid-c my-breakpoint">';
         for (var i = 0; i < len; i++) {
             row = results.rows.item(i);
-            $('#productos').append($('<div/>', {
-                'class': 'ui-block-a'
-            }).append($('<div/>', {//here appending `<a>` into `<li>`
-                'class': 'ui-body ui-body-d'
-            }).append($('<a/>', {//here appending `<a>` into `<li>`
-                'href': 'producto.html?id=' + row.id
-            }).prepend('<img src="' + row.imagen + '"/>'))));
+            html += '<div class="ui-block-a"><a href="producto.html?id=' + row.id + '"><img src="' + row.imagen + '"/></a></div>';
+            //<div class="ui-body ui-body-d">
         }
-        $('#categoryName').text(row.categoria);
+        html += '</div>';
+        $('#productos').html(html);
         $('#productos').table("refresh");
+        $('#categoryName').text(row.categoria);
     }
 };
 var getProductoInfo = function(productoID) {
