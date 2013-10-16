@@ -1,6 +1,6 @@
 
-var wsUrl = "http://adventasoluciones.com.mx/detallistas/public/wsdl/index/soap";
-//var wsUrl = "http://localhost/adccmdev/public/wsdl/index/soap";
+//var wsUrl = "http://adventasoluciones.com.mx/detallistas/public/wsdl/index/soap";
+var wsUrl = "http://localhost/adccmdev/public/wsdl/index/soap";
 $.mobile.allowCrossDomainPages = true;
 $.support.cors = true;
 
