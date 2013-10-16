@@ -33,6 +33,7 @@
 
     </head>
     <body>
+        <script src="js/sesion.js"></script>
         <script type="text/javascript">
             $(document).on("pageinit", function() {
                 $.mobile.defaultPageTransition = "none";
@@ -41,6 +42,19 @@
 //                    reverse: true,
                     changeHash: true
                 });
+                var info = sesion.get("info");    
+                var puntos = sesion.get("puntos");
+                //datos personales
+                $( "#name" ).html(info.nombre);
+                $( "#rfc" ).html(info.numerocliente);
+                $( "#dist" ).html(info.idvendedor);
+                $( "#gte" ).html(info.telcasa);
+                $( "#fyi" ).html(info.telcelular);
+                //puntos
+                $( "#acumulados" ).html(puntos.acumulados);   
+                $( "#canjeados" ).html(puntos.canjeados);   
+                $( "#actuales" ).html(puntos.disponibles);   
+                $( "#penalizados" ).html(puntos.extras);   
             });
         </script>
         <section data-role="page" data-title="categoria" data-theme="b" id="categoria" data-add-back-btn="true" class="ui-responsive-panel">
@@ -65,11 +79,11 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th>Alejandra Reyes</th>
-                                <td>RFCS123456</td>
-                                <td>714 Chevrolet La Era</td>
-                                <td>Pedro Loza</td>
-                                <td>Eulogio Parra</td>
+                                <td><span id="name"></span></td>
+                                <td><span id="rfc"></span></td>
+                                <td><span id="dist"></span></td>
+                                <td><span id="name"></span></td>
+                                <td><span id="fyi"></span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -78,10 +92,10 @@
                     <hr>
                     <div id="joyas">
                         <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
-                            <li class="ui-li ui-li-static ui-btn-up-c ui-first-child"><span class="mini-bag2 item-count">&nbsp;</span>Acumuladas en el A&ntilde;o:<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">2000</span></li>
-                            <li class="ui-li ui-li-static ui-btn-up-c ui-li-has-count"><span class="mini-bag2 item-count">&nbsp;</span>Canjeadas:<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">1600</span></li>
-                            <li class="ui-li ui-li-static ui-btn-up-c ui-li-has-count"><span class="mini-bag2 item-count">&nbsp;</span>Penalizadas (4 meses sin venta): <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">200</span></li>
-                            <li class="ui-li ui-li-static ui-btn-up-c"><span class="mini-bag2 item-count">&nbsp;</span>Actuales:<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">200</span></li>
+                            <li class="ui-li ui-li-static ui-btn-up-c ui-first-child"><span class="mini-bag2 item-count">&nbsp;</span>Acumuladas en el A&ntilde;o:<span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><span id="acumulados"></span></span></li>
+                            <li class="ui-li ui-li-static ui-btn-up-c ui-li-has-count"><span class="mini-bag2 item-count">&nbsp;</span>Canjeadas:<span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><span id="canjeados"></span></span></li>
+                            <li class="ui-li ui-li-static ui-btn-up-c ui-li-has-count"><span class="mini-bag2 item-count">&nbsp;</span>Penalizadas (4 meses sin venta): <span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><span id="penalizados"></span></span></li>
+                            <li class="ui-li ui-li-static ui-btn-up-c"><span class="mini-bag2 item-count">&nbsp;</span>Actuales:<span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><span id="actuales"></span></span></li>
                         </ul>
                     </div>
                     <br>
