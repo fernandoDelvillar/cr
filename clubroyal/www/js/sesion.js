@@ -7,7 +7,7 @@
 var sesion = {
     // Application Constructor
     init: function(json) {
-        window.localStorage.clear();
+        this.clear();
         $.each(json, function(key, value) {
             sesion.sets(key, value);
         });

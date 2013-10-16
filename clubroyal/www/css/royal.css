@@ -26,7 +26,11 @@ body {
     font-family: arial;
     font-size: 180%
 }
-#logo{width:70%; margin: 0 auto; padding: 1em;}
+#logo{
+    width: 90%;
+    margin: 0 auto;
+    padding: .5em 0;
+}
 
 #logohead{height: 30px;
           position: absolute;
