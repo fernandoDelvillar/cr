@@ -70,8 +70,8 @@ var llenaCategoriasMin = function(results) {
     var html = '';
     for (var i = 0; i < len; i++) {
         var row = results.rows.item(i);
-        html += '<li><a href="categoria.html?id=' + row.id + '"<h2>'
-                + row.nombre + '</h2><img src="' + row.imagen + '"/></a></li>';
+        html += '<li><a href="categoria.html?id=' + row.id + '" ><div><h2 style="text-align: center;font-size: .8em !important;" title="'+ row.nombre +'">'
+                + row.nombre + '</h2></div><div style="text-align: center;"><img src="' + row.imagen + '" width="100"/></div></a></li>';
     }
     $('#menucat').html(html).listview('refresh');
 };
