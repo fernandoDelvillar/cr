@@ -42,19 +42,27 @@
 //                    reverse: true,
                     changeHash: true
                 });
-                var info = sesion.get("info");    
-                var puntos = sesion.get("puntos");
-                //datos personales
-                $( "#name" ).html(info.nombre);
-                $( "#rfc" ).html(info.numerocliente);
-                $( "#dist" ).html(info.idvendedor);
-                $( "#gte" ).html(info.telcasa);
-                $( "#fyi" ).html(info.telcelular);
-                //puntos
-                $( "#acumulados" ).html(puntos.acumulados);   
-                $( "#canjeados" ).html(puntos.canjeados);   
-                $( "#actuales" ).html(puntos.disponibles);   
-                $( "#penalizados" ).html(puntos.extras);   
+                
+                var info = sesion.get('info');    
+                var puntos = sesion.get('puntos');
+                //alert(puntos.disponibles);
+                if (puntos.disponibles !== undefined) {
+                    //datos personales
+                    $( "#name" ).html(info.nombre);
+                    $( "#rfc" ).html(info.numerocliente);
+                    $( "#dist" ).html(info.idvendedor);
+                    $( "#gte" ).html(info.telcasa);
+                    $( "#fyi" ).html(info.telcelular);
+                    //puntos
+                    $( "#acumulados" ).html(puntos.acumulados);   
+                    $( "#canjeados" ).html(puntos.canjeados);   
+                    $( "#actuales" ).html(puntos.disponibles);   
+                    $( "#penalizados" ).html(puntos.extras);   
+                } else {
+                    alert("Sesión expirada\n\nPor favor vuelve a iniciar sesión");
+                    $.mobile.changePage("login.html", {transition: "none", changeHash: false});
+                }   
+                    
             });
         </script>
         <section data-role="page" data-title="categoria" data-theme="b" id="categoria" data-add-back-btn="true" class="ui-responsive-panel">
