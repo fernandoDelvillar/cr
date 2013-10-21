@@ -67,7 +67,7 @@ footer p{ font-size: 60%!important;
 /*    .header a .ui-link span*/
 
 .mini-bag {
-    background: url(../img/sprite_layout.png) no-repeat scroll -127px 1px / 925px 32px transparent;
+    /*background: url(../img/sprite_layout.png) no-repeat scroll -127px 1px / 925px 32px transparent;*/
     color: #FFFFFF;
     display: block;
     float: right;
