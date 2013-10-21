@@ -168,8 +168,11 @@ footer p{ font-size: 60%!important;
 
 }
 @media all and (max-width: 270px){
-    .mini-bag{display:none;}}
-
+    /*.mini-bag{display:none;}*/
+    h1{
+        font-size: 1em;
+    }
+}
 
 @media all and (max-width: 300px){
     #logohead{display:none;}
