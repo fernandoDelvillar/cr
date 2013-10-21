@@ -90,16 +90,53 @@
                     <br>
                     <h3>Resumen General a la Fecha </h3>
                     <hr>
-                    <div id="joyas">
-                        <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
-                            <li class="ui-li ui-li-static ui-btn-up-c ui-first-child"><span class="mini-bag2 item-count">&nbsp;</span>Acumuladas en el A&ntilde;o:<span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><span id="acumulados"></span></span></li>
-                            <li class="ui-li ui-li-static ui-btn-up-c ui-li-has-count"><span class="mini-bag2 item-count">&nbsp;</span>Canjeadas:<span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><span id="canjeados"></span></span></li>
-                            <li class="ui-li ui-li-static ui-btn-up-c ui-li-has-count"><span class="mini-bag2 item-count">&nbsp;</span>Penalizadas (4 meses sin venta): <span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><span id="penalizados"></span></span></li>
-                            <li class="ui-li ui-li-static ui-btn-up-c"><span class="mini-bag2 item-count">&nbsp;</span>Actuales:<span class="ui-li-count ui-btn-up-c ui-btn-corner-all"><span id="actuales"></span></span></li>
-                        </ul>
+                    <div data-role="content">
+                        <div data-role="collapsible-set" data-theme="a" data-content-theme="c">
+                            <div data-role="collapsible">
+                                <span class="mini-bag2 item-count">&nbsp;</span>
+                                <h3>Acumuladas:</h3>                                
+                                <div>
+                                    <div style="float: left;width: 5em;text-align: center">
+                                        <span id="acumulados"></span>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                </div>
+                            </div>                            
+                            <div data-role="collapsible">
+                                <span class="mini-bag2 item-count">&nbsp;</span>
+                                <h3>Canjeadas:</h3>                                
+                                <div>
+                                    <div style="float: left;width: 5em;text-align: center">
+                                        <span id="canjeados"></span>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                </div>
+                            </div>      
+                            <div data-role="collapsible">
+                                <span class="mini-bag2 item-count">&nbsp;</span>
+                                <h3>Penalizadas <br>(4 meses sin venta):</h3>                                
+                                <div>
+                                    <div style="float: left;width: 5em;text-align: center">
+                                        <span id="penalizados"></span>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                </div>
+                            </div>      
+                            <div data-role="collapsible">
+                                <span class="mini-bag2 item-count">&nbsp;</span>
+                                <h3>Actuales:</h3>                                
+                                <div>
+                                    <div style="float: left;width: 5em;text-align: center">
+                                        <span id="actuales"></span>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                </div>
+                            </div>      
+                        </div>
                     </div>
-                    <br>
-                    </section>
+                </div>
+                <br>
+                </section>
                     <footer data-role="footer"  data-position="fixed">
                         <div id="fot">
                             <img id="logofot1" src="img/adventa.png">     <img id="logofot2" src="img/adbox.png">   
