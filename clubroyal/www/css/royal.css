@@ -154,6 +154,7 @@ footer p{ font-size: 60%!important;
 @media all and (max-width: 650px){
     #categorias1{display:none;}
     #categorias2{display:block;} 
+    .cat-produc{width: 150px}
 
 }
 
