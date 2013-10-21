@@ -67,7 +67,7 @@ footer p{ font-size: 60%!important;
 /*    .header a .ui-link span*/
 
 .mini-bag {
-    /*background: url(../img/sprite_layout.png) no-repeat scroll -127px 1px / 925px 32px transparent;*/
+    background: url(../img/sprite_layout.png) no-repeat scroll -127px 1px / 925px 32px transparent;
     color: #FFFFFF;
     display: block;
     float: right;
@@ -154,7 +154,6 @@ footer p{ font-size: 60%!important;
 @media all and (max-width: 650px){
     #categorias1{display:none;}
     #categorias2{display:block;} 
-    .cat-produc{width: 150px}
 
 }
 
@@ -172,6 +171,10 @@ footer p{ font-size: 60%!important;
     /*.mini-bag{display:none;}*/
     h1{
         font-size: 1em;
+    }
+    .aliHome{
+        width: 100%;
+        text-align: center !important;
     }
 }
 
