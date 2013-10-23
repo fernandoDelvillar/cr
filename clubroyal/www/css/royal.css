@@ -67,16 +67,15 @@ footer p{ font-size: 60%!important;
 /*    .header a .ui-link span*/
 
 .mini-bag {
-    background: url(../img/sprite_layout.png) no-repeat scroll -127px 1px / 925px 32px transparent;
+    /*background: url(../img/sprite_layout.png) no-repeat scroll -127px 1px / 925px 32px transparent;*/
     color: #FFFFFF;
     display: block;
     float: right;
     font-size: 13px;
-    height: 22px;
     margin: 4px 7px 0 0;
     padding: 11px 0 0 11px;
     text-shadow: none;
-    width: 22px;
+    width: 50px;
 }
 .mini-bag2 {
     background: url(../img/sprite_layout.png) no-repeat scroll -127px 1px / 925px 32px transparent;
@@ -168,14 +167,48 @@ footer p{ font-size: 60%!important;
 
 }
 @media all and (max-width: 270px){
-    /*.mini-bag{display:none;}*/
+    .edgarMini{
+        color: #FFFFFF;
+        display: block;
+        font-size: 13px;
+        text-shadow: none;
+        width: 50px;
+        margin: 0px !important;
+        padding: 0px !important;
+    }
+    .edgarPrecio{
+        color: darkmagenta;
+        display: block;
+        font-size: 25px;
+        padding-top: 5px;
+        text-shadow: none;
+        margin: 0px !important;
+        padding: 0px !important;
+    }
     h1{
         font-size: 1em;
+        text-align: center;
+    }
+    h2 #sku{
+        font-size: .78em;
     }
     .aliHome{
         width: 100%;
         text-align: center !important;
     }
+    .ui-btn-text{
+        font-size: 1.5em;
+        white-space: initial;
+    }
+    .añadir{
+        font-size: .99em;
+    }
+    #precio{
+        float: left !important;
+    }
+    /*    .ui-btn-up-b .ui-btn-inner .ui-btn-text:hover{
+            font-size: .1em;
+        }*/
 }
 
 @media all and (max-width: 300px){

@@ -119,7 +119,7 @@ var productosSuccess = function(tx, results) {
         var html = '<div id="productos" class="ui-grid-c my-breakpoint">';
         for (var i = 0; i < len; i++) {
             row = results.rows.item(i);
-            html += '<div class="ui-block-a"><a href="producto.html?id=' + row.id + '"><img src="' + row.imagen + '"/></a></div>';
+            html += '<div class="ui-block-a"><a href="producto.html?id=' + row.id + '"><img src="' + row.imagen + '" /></a></div>';
             //<div class="ui-body ui-body-d">
         }
         html += '</div>';
