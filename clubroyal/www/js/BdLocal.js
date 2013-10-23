@@ -170,19 +170,19 @@ var showCartSuccess = function(tx, results) {
             var row = results.rows.item(i);
             var importe = row.precio * row.cantidad;
             total += importe;
-            $('#tableContent').append($('<tr/>').append($('<td/>').
-                    append('<img src="' + row.imagen + '" style = "width: 100%;max-width:200px; "/>')
-                    .append($('<p/>', {
-                'id': 'productName',
+            $('#edgartable').append($('<tr/>')
+                    .append($('<td/>').append('<img src="' + row.imagen + '" style = "width: 100%;max-width:200px; "/>')
+            ).append($('<td/>', {
+                //'id': 'productName',
                 'text': row.nombre
-            }))).append($('<td/>', {
-                'class': 'ui-table-cell-label',
+            })).append($('<td/>', {
+                //'class': 'ui-table-cell-label',
                 'text': row.cantidad
             })).append($('<td/>', {
-                'class': 'ui-table-cell-label',
+                //'class': 'ui-table-cell-label',
                 'text': row.precio
             })).append($('<td/>', {
-                'class': 'ui-table-cell-label',
+                //'class': 'ui-table-cell-label',
                 'text': importe
             })).append($('<td/>', {}).append($('<div/>', {
                 'data-role': 'button',
