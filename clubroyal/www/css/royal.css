@@ -228,6 +228,9 @@ footer p{ font-size: 60%!important;
     #orderNumber{
         font-size: 2em;
     }
+    #edgar1menu span{
+        padding: 18px 2px 19px 18px;
+    }
 }
 
 @media all and (max-width: 300px){
