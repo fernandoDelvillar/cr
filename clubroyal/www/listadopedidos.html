@@ -43,23 +43,23 @@
             min-width: 100% !important;
         }
         @media (min-width: 35em){
-        .ui-table-reflow.ui-responsive {
-            /*display: table-row-group;*/
-            width: 100% !important;
-        }}
-    </style>
-    <body >
-        <script type="text/javascript">
-            $(document).on("pageinit", function() {
-                $.mobile.defaultPageTransition = "none";
-                $.mobile.changePage("#pageid", {
-                    transition: "none",
-//                    reverse: true,
-                    changeHash: true
+            .ui-table-reflow.ui-responsive {
+                /*display: table-row-group;*/
+                width: 100% !important;
+            }}
+        </style>
+        <body >
+            <script type="text/javascript">
+                $(document).on("pageinit", function() {
+                    $.mobile.defaultPageTransition = "none";
+                    $.mobile.changePage("#pageid", {
+                        transition: "none",
+                        //                    reverse: true,
+                        changeHash: true
+                    });
                 });
-            });
-        </script>
-        <section data-role="page" data-title="categoria" data-theme="b" id="categoria" data-add-back-btn="true" class="ui-responsive-panel">
+            </script>
+            <section data-role="page" data-title="categoria" data-theme="b" id="categoria" data-add-back-btn="true" class="ui-responsive-panel">
             <div data-role="header" data-theme="a" >
                 <a href="home.html" data-icon="back" >Atr&aacute;s</a>
                 <h1>Pedidos</h1>
@@ -93,39 +93,7 @@
                     <h3>Estos son los pedidos que has canjeado a la fecha:</h3>
                     <!--<div data-role="page" id="page1">-->
                     <div data-role="content">
-                        <div data-role="collapsible-set" data-theme="a" data-content-theme="c">
-                            <div data-role="collapsible">
-                                <h3>
-                                    #676775r5
-                                </h3>
-                                <div>
-                                    <div style="float: left;width: 5em;text-align: center">
-                                        <img src="img/max/ALLY-27-12-347.jpg" width="100" />
-                                    </div>
-                                    <div style="float: left;width: 45em">
-                                        <table style="font-size: 1em">
-                                            <tr>
-                                                <th>Nombre: </th>
-                                                <td>Casa de campaña</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Precio: </th>
-                                                <td>250</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Cantidad: </th>
-                                                <td>2</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Total: </th>
-                                                <td>500</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <div style="clear: both"></div>
-                                    <hr />
-                                </div>
-                            </div>                            
+                        <div data-role="collapsible-set" data-theme="a" data-content-theme="c">                                                       
                             <div data-role="collapsible">
                                 <h3>
                                     #56jjd3
