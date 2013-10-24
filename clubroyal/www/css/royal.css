@@ -206,9 +206,10 @@ footer p{ font-size: 60%!important;
     #precio{
         float: left !important;
     }
-    /*    .ui-btn-up-b .ui-btn-inner .ui-btn-text:hover{
-            font-size: .1em;
-        }*/
+    .ui-header .ui-title, .ui-footer .ui-title {
+        text-align: right !important;
+        margin: .6em 1em .8em !important;
+    }
 }
 
 @media all and (max-width: 300px){
