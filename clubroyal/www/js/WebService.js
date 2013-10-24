@@ -7,7 +7,7 @@ $.support.cors = true;
 var canlogin = function(username, pass) {
     var methodname = 'getCcmClienteInfo';
     var uri = wsUrl + '/' + methodname;
-    var soapRequest = '<?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:ns1="' + wsUrl + '" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:enc="http://www.w3.org/2003/05/soap-encoding"><env:Body><ns1:getCcmClienteInfo env:encodingStyle="http://www.w3.org/2003/05/soap-encoding"><numeroCliente xsi:type="xsd:string">' + username + '</numeroCliente><psw xsi:type="xsd:string">' + pass + '</psw></ns1:getCcmClienteInfo></env:Body></env:Envelope>';
+    var soapRequest = '<?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:ns1="' + wsUrl + '" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:enc="http://www.w3.org/2003/05/soap-encoding"><env:Body><ns1:getCcmClienteInfo env:encodingStyle="http://www.w3.org/2003/05/soap-encoding"><numeroCliente xsi:type="xsd:string">' + username + '</numeroCliente><psw xsi:type="xsd:string">VFZSSk1FNVJQVDA9</psw></ns1:getCcmClienteInfo></env:Body></env:Envelope>';
     $.ajax({
         cache: false,
         type: "POST",
