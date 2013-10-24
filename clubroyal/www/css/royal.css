@@ -214,10 +214,10 @@ footer p{ font-size: 60%!important;
         font-size: .8em !important;        
     }
     .menu1Edgar{
-        width: 30%;
+        width: 30% !important;
     }
     .menu2Edgar{
-        width: 70%;
+        width: 70% !important;
     }
     .menu3Edgar{
         display: none;
