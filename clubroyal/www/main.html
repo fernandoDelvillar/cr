@@ -61,7 +61,7 @@
 
                         <!--p><a href="#home" ="pop">Next</a></p>
                         <p><a href="index2.html">Change Theme</a></p buildIt() logIn()-->
-                        <input  type="button" onclick="canlogin()" data-inline="true" data-theme="a" value="Entrar" />
+                        <input  id="buttonLogin" type="button" data-inline="true" data-theme="a" value="Entrar" />
                     </form>
                 </center>
             </section>
@@ -79,18 +79,25 @@
             <script type="text/javascript" src="js/sesion.js"></script>            
             <script type="text/javascript" src="js/WebService.js"></script>            
             <script type="text/javascript" src="js/BdLocal.js"></script>            
+            <script type="text/javascript" src="js/base64.js"></script>            
             <script type="text/javascript">
 //                            app.initialize();
-                            $(document).on("pageinit", function() {
-                                $.mobile.defaultPageTransition = "none";
-                            });
-                            document.addEventListener('deviceready', function() {
-                                alert("init");
-
-                                alert("database was crleanded ");
-                            }, false);
-                            sesion.clear();
-                            creaDB();
+                $(document).on("pageinit", function() {
+                    $.mobile.defaultPageTransition = "none";
+                });
+                document.addEventListener('deviceready', function() {
+                    sesion.clear();
+                    creaDB();
+                }, false);
+                $("#buttonLogin").on('click', function(event) {
+                    event.preventDefault();
+                    var user = $('#userID').val();
+                    var pass = $('#pass').val();
+                    if (user !== '' && pass !== '') {
+                        pass=Base64.encode(Base64.encode(Base64.encode(pass)));
+                        canlogin(user, pass);
+                    }
+                });
             </script>
         </div>
     </body>

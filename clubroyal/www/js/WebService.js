@@ -1,13 +1,14 @@
 //var wsUrl = "http://adventasoluciones.com.mx/detallistas/public/wsdl/index/soap";
-//var wsUrl = "http://localhost/adccmdev/public/wsdl/index/soap";
-var wsUrl = "http://orios.localhost/projects/adccmdev/public/wsdl/index/soap";
+var wsUrl = "http://localhost/adccmdev/public/wsdl/index/soap";
+//var wsUrl = "http://orios.localhost/projects/adccmdev/public/wsdl/index/soap";
 $.mobile.allowCrossDomainPages = true;
 $.support.cors = true;
 
-var canlogin = function() {
+var canlogin = function(username, pass) {
     var methodname = 'getCcmClienteInfo';
     var uri = wsUrl + '/' + methodname;
-    var soapRequest = '<?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:ns1="' + wsUrl + '" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:enc="http://www.w3.org/2003/05/soap-encoding"><env:Body><ns1:getCcmClienteInfo env:encodingStyle="http://www.w3.org/2003/05/soap-encoding"><numeroCliente xsi:type="xsd:string">demo1</numeroCliente><psw xsi:type="xsd:string">VFZSSk1FNVJQVDA9</psw></ns1:getCcmClienteInfo></env:Body></env:Envelope>';
+    var soapRequest = '<?xml version="1.0" encoding="UTF-8"?><env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope" xmlns:ns1="' + wsUrl + '" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:enc="http://www.w3.org/2003/05/soap-encoding"><env:Body><ns1:getCcmClienteInfo env:encodingStyle="http://www.w3.org/2003/05/soap-encoding"><numeroCliente xsi:type="xsd:string">' + username + '</numeroCliente><psw xsi:type="xsd:string">' + pass + '</psw></ns1:getCcmClienteInfo></env:Body></env:Envelope>';
+    alert(soapRequest);
     $.ajax({
         cache: false,
         type: "POST",
@@ -21,7 +22,6 @@ var canlogin = function() {
 
     function processSuccess(data, status, req) {
         if (status === "success") {
-            $("#response").text(req.responseXML);
             var response = $(req.responseXML).find("return").text();
             var json = JSON.parse(response);
             sesion.init(json);
@@ -36,13 +36,16 @@ var canlogin = function() {
                 $.mobile.changePage("home.html");
             } else {
                 alert("No se puede iniciar sesión\nUsuario y/o contraseña incorrectos\n\nFavor de verificarlos");
+                sesion.clear();
             }
         } else {
-            alert("no sucess");
+            alert("No se pudo establecer la conexión con el servidor");
+            sesion.clear();
         }
     }
 
     function processError(data, status, req) {
+        sesion.clear();
         alert("No se pudo establecer la conexión con el servidor");
     }
 
