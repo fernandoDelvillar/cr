@@ -176,13 +176,13 @@ var showCartSuccess = function(tx, results) {
                 //'id': 'productName',
                 'text': row.nombre
             })).append($('<td/>', {
-                //'class': 'ui-table-cell-label',
+                'class': 'ui-table-cell-label',
                 'text': row.cantidad
             })).append($('<td/>', {
-                //'class': 'ui-table-cell-label',
+                'class': 'ui-table-cell-label',
                 'text': row.precio
             })).append($('<td/>', {
-                //'class': 'ui-table-cell-label',
+                'class': 'ui-table-cell-label',
                 'text': importe
             })).append($('<td/>', {}).append($('<div/>', {
                 'data-role': 'button',
@@ -202,7 +202,7 @@ var showCartSuccess = function(tx, results) {
         }
         updatePuntos(total);
         $("#total").text(total);
-        $("#mytable").table("refresh");
+        $("#reflow-basic").table("refresh");
     }
     function updatePuntos(total) {
         var puntos = sesion.get("puntos");
