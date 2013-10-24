@@ -215,12 +215,22 @@ footer p{ font-size: 60%!important;
     }
     .menu1Edgar{
         width: 30% !important;
+        padding: 18px 19px 19px;
     }
     .menu2Edgar{
         width: 70% !important;
     }
     .menu3Edgar{
         display: none;
+    }
+    .menu4Edgar{
+        padding: 18px 19px 19px;
+    }
+    #felicidades{
+        font-size: 1.3em;        
+    }
+    #orderNumber{
+        font-size: 2em;
     }
 }
 
