@@ -33,39 +33,8 @@
 
     </head>
     <body>
-        <script src="js/sesion.js"></script>
-        <script type="text/javascript">
-            $(document).on("pageinit", function() {
-                $.mobile.defaultPageTransition = "none";
-                $.mobile.changePage("#pageid", {
-                    transition: "none",
-//                    reverse: true,
-                    changeHash: true
-                });
-                
-                var info = sesion.get('info');    
-                var puntos = sesion.get('puntos');
-                //alert(puntos.disponibles);
-                if (puntos.disponibles !== undefined) {
-                    //datos personales
-                    $( "#name" ).html(info.nombre);
-                    $( "#rfc" ).html(info.numerocliente);
-                    $( "#dist" ).html(info.idvendedor);
-                    $( "#gte" ).html(info.telcasa);
-                    $( "#fyi" ).html(info.telcelular);
-                    //puntos
-                    $( "#acumulados" ).html(puntos.acumulados);   
-                    $( "#canjeados" ).html(puntos.canjeados);   
-                    $( "#actuales" ).html(puntos.disponibles);   
-                    $( "#penalizados" ).html(puntos.extras);   
-                } else {
-                    alert("Sesión expirada\n\nPor favor vuelve a iniciar sesión");
-                    $.mobile.changePage("login.html", {transition: "none", changeHash: false});
-                }   
-                    
-            });
-        </script>
-        <section data-role="page" data-title="categoria" data-theme="b" id="categoria" data-add-back-btn="true" class="ui-responsive-panel">
+        
+        <section data-role="page" data-title="categoria" data-theme="b" id="estadocuenta" data-add-back-btn="true" class="ui-responsive-panel">
             <div data-role="header" data-theme="a" >
                 <a href="home.html" data-icon="back" >Atr&aacute;s</a>
                 <h1>Cat&aacute;logo</h1>
@@ -152,6 +121,39 @@
                                 Quedan reservados todos los derechos de edici&oacute;n,  copia o reproducci&oacute;n parcial o total.
                                 T&eacute;rminos y condiciones de uso.  Aviso de Privacidad.</p></div>
                     </footer>
+            
+            <script src="js/sesion.js"></script>
+        <script type="text/javascript">
+            $('#estadocuenta').on("pageshow", function() {
+                $.mobile.defaultPageTransition = "none";
+                $.mobile.changePage("#pageid", {
+                    transition: "none",
+//                    reverse: true,
+                    changeHash: true
+                });
+                
+                var info = sesion.get('info');    
+                var puntos = sesion.get('puntos');
+                //alert(puntos.disponibles);
+                if (puntos.disponibles !== undefined) {
+                    //datos personales
+                    $( "#name" ).html(info.nombre);
+                    $( "#rfc" ).html(info.numerocliente);
+                    $( "#dist" ).html(info.idvendedor);
+                    $( "#gte" ).html(info.telcasa);
+                    $( "#fyi" ).html(info.telcelular);
+                    //puntos
+                    $( "#acumulados" ).html(puntos.acumulados);   
+                    $( "#canjeados" ).html(puntos.canjeados);   
+                    $( "#actuales" ).html(puntos.disponibles);   
+                    $( "#penalizados" ).html(puntos.extras);   
+                } else {
+                    alert("Sesión expirada\n\nPor favor vuelve a iniciar sesión");
+                    $.mobile.changePage("login.html", {transition: "none", changeHash: false});
+                }   
+                    
+            });
+        </script>
             </section>
     </body>
 </html>
