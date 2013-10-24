@@ -210,6 +210,18 @@ footer p{ font-size: 60%!important;
         text-align: right !important;
         margin: .6em 1em .8em !important;
     }
+    .ui-link-inherit{
+        font-size: .8em !important;        
+    }
+    .menu1Edgar{
+        width: 30%;
+    }
+    .menu2Edgar{
+        width: 70%;
+    }
+    .menu3Edgar{
+        display: none;
+    }
 }
 
 @media all and (max-width: 300px){
