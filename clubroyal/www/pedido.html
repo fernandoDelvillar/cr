@@ -34,10 +34,16 @@
     <body>
         <section data-role="page" data-title="categoria" data-theme="b" id="pedidoInfo" data-add-back-btn="true" class="ui-responsive-panel">
             <div data-role="header" data-theme="a" id="header">
-                <a href="home.html" data-icon="back" >Atr&aacute;s</a>
+                <a href="#" id="back" data-rel="back" data-icon="back" >Atr&aacute;s</a>
                 <div style="visibility: hidden" id="redirect"></div>
-                <h1>CANJE DE PREMIOS</h1>
+                <h1>Cat&aacute;logo</h1>
                 <img align="right" id="logohead" src="img/logohead.png">
+                <div data-role="navbar" data-iconpos="left" data-theme="c" class="barracat">
+                    <ul>
+                        <li style="width:40%;overflow:hidden"><a data-icon="grid" href="#nav-panel" id="categnom1" >Categor&iacute;as</a></li>
+                        <li style="width:60%"><a href="#" id="categoryname" style="cursor:default;overflow:hidden">Artículos de viaje</a></li>                        
+                    </ul>
+                </div>
             </div>
             <section data-role="content">
                 <div style="">
@@ -70,12 +76,11 @@
                 <br/>
                 <br/>
             </section>
-            <footer data-role="footer"  data-position="fixed">
+            <footer data-role="footer"  data-position="fixed"  class="ui-fixed-hidden">
                 <div id="fot">
                     <img id="logofot1" src="img/adventa.png">     <img id="logofot2" src="img/adbox.png">   
-                    <p>D.R.<abbr lang="en" title="Copyright"> &COPY;</abbr>Copyright 2013.  Derechos Reservados.  Adventa y Adbox son marcas registradas de Publigraphics S.A. de C.V. 
-                        Quedan reservados todos los derechos de edici&oacute;n,  copia o reproducci&oacute;n parcial o total.
-                        T&eacute;rminos y condiciones de uso.  Aviso de Privacidad.</p></div>
+                    <p>D.R.<abbr lang="en" title="Copyright"> &COPY;</abbr>Copyright 2013.  Derechos Reservados. 
+                       T&eacute;rminos y condiciones de uso.  Aviso de Privacidad.</p></div>
             </footer>
             <div data-role="panel" data-position-fixed="true" data-theme="a" id="nav-panel">
                 <ul data-role="listview" data-theme="a" class="nav-search" id="panelCategoria">

@@ -70,8 +70,8 @@ var llenaCategoriasMin = function(results) {
     var html = '';
     for (var i = 0; i < len; i++) {
         var row = results.rows.item(i);
-        html += '<li><a href="categoria.html?id=' + row.id + '" ><div><h2 style="text-align: center;font-size: .8em !important;" title="'+ row.nombre +'">'
-                + row.nombre + '</h2></div><div style="text-align: center;"><img src="' + row.imagen + '" class="cat-produc" width="100"/></div></a></li>';
+        html += '<li><a href="categoria.html?id=' + row.id + '" ><div><h2 class="ui-li-heading1" title="'+ row.nombre +'">'
+                + row.nombre + '</h2></div><div id="cataim"><img src="' + row.imagen + '" class="cat-produc" width="100"/></div></a></li>';
     }
     $('#menucat').html(html).listview('refresh');
 };
@@ -186,6 +186,7 @@ var showCartSuccess = function(tx, results) {
                 'text': importe
             })).append($('<td/>', {}).append($('<div/>', {
                 'data-role': 'button',
+                'id': 'buttonelim',
                 'data-corners': 'true',
                 'data-shadow': 'true',
                 'data-iconshadow': 'true',

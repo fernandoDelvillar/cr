@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <link rel="shortcut icon" href="favicon.ico">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" href="css/jquery.mobile-1.3.2.min.css"/>
+        <link rel="stylesheet" href="css/jquery.mobile.structure-1.3.2.min.css" />
+        <link rel="stylesheet" href="css/jquery.mobile.theme-1.3.2.min.css" />
+        <link rel="stylesheet" href="css/royal.css" />
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery.mobile-1.3.2.min.js"></script>
+        <script src="js/BdLocal.js"></script>
+        <script src="js/sesion.js"></script>
+        <title>Club Royal</title>
+    </head>
+    <body>
+        <div data-role="page" data-theme="b" class="scrollable" id="catalogo">
+            <section data-role="content" data-position="relative">
+                <div data-role="header" data-theme="a">
+                    <a href="home.html" data-icon="back" >Atr&aacute;s</a>
+                    <h1> Cat&aacute;logo</h1>
+                    <img align="right" id="logohead" src="img/logohead.png">
+                </div>
+                <section data-role="content">
+                    <div class="">
+                        <span class="mini" id="disponibles"> </span>
+                        <span class="mini-bag item-count"><img src="img/joya.png" width="40" ></span>
+                        <div style="clear: both"></div>
+                    </div>
+                    <h1> Elije una categor&iacute;a.</h1>
+                    <div id="categorias1" >
+                        <div  id="cat1" >
+                            <ul data-role="listview" data-inset="true" data-theme="d" id="menucat1" >
+                                <!--                                <li><a href="categoria.html" > <img src="img/resized/ALLY-16-08-201_100x100.jpg"/><h2>Art&iacute;culos de Viaje</h2></a></li>
+                                                                <li><a href="#categoria" > <img src="img/resized/ALLY-33-12-298_100x100.jpg"/><h2>Aventura al aire libre</h2></a></li>
+                                                                <li><a href="#categoria" > <img src="img/resized/ALLY-38-02-549_100x100.jpg"/><h2>Decoraci&oacute;n y hogar</h2></a></li>
+                                                                <li><a href="#categoria" > <img src="img/resized/ALLY-10-03-444_100x100.jpg"/><h2>Entretenimiento</h2></a></li>
+                                                                <li><a href="#categoria" > <img src="img/resized/ALLY-04-01-017_100x100.jpg"/><h2>Para &Eacute;l</h2></a></li>
+                                                                <li><a href="#categoria" > <img src="img/resized/ALLY-29-10-289_100x100.jpg"/><h2>Para Ella</h2></a></li>-->
+                            </ul>
+
+                        </div>
+                        <div id="cat2" >
+                            <ul data-role="listview" data-inset="true" data-theme="d" id="menucat2" >
+                                <!--                                <li><a href="restaurant.HTML" > <img src="img/resized/ALLY-03-06-010_100x100.jpg"/> <h2>Ni&ntilde;os y Beb&eacute;s</h2></a></li>
+                                                                <li><a href="restaurant.HTML" > <img src="img/resized/ALLY-95-04-948.jpg"/> <h2> Experiencias</h2> </a></li>
+                                                                <li><a href="restaurant.HTML" > <img src="img/resized/ALLY-19-02-928.jpg"/> <h2> L&iacute;nea Blanca</h2></a></li>
+                                                                <li><a href="restaurant.HTML" > <img src="img/resized/ALLY-90-05-941_100x100.jpg"/> <h2> Tecnolog&iacute;a</h2> </a></li>
+                                                                <li><a href="restaurant.HTML" > <img src="img/resized/ALLY-04-01-017_100x100.jpg"/><h2>Salud y Belleza</h2></a></li>-->
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="categorias2" >
+                        <div  id="cat0" >
+                            <ul data-role="listview" data-inset="true" data-theme="d" id="menucat" >
+                            </ul>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div data-role="navbar" data-iconpos="left" data-theme="a">
+                        <ul>
+                            <li style="width: 50%;"><a href="home.html">Regresar al menú principal</a></li>
+                            <li style="width: 50%;"> <a href="carrito.html"> Ir a carrito de compras</a></li>
+                        </ul>
+                    </div>
+                    <br/>
+                    <br/>
+
+                </section>
+                <footer data-role="footer" data-position="fixed" >
+                    <div id="fot">
+                        <img id="logofot1" src="img/adventa.png">     <img id="logofot2" src="img/adbox.png">   
+                        <p>D.R.<abbr lang="en" title="Copyright"> &COPY;</abbr>Copyright 2013.  Derechos Reservados.  Adventa y Adbox son marcas registradas de Publigraphics S.A. de C.V. 
+                            Quedan reservados todos los derechos de edici�n,  copia o reproducci�n parcial o total.
+                            Términos y condiciones de uso.  Aviso de Privacidad.</p></div>
+                </footer> 
+                <script type="text/javascript">
+                    $(document).on("pageinit", function() {
+                        $.mobile.defaultPageTransition = "none";
+                    });
+                    $("#catalogo").bind("pageshow", function() {
+                        getCategorias();
+                        var disponibles = sesion.get('puntos').disponibles;
+                        if (disponibles !== undefined) {
+                            $("#disponibles").text(disponibles);
+                        } else {
+                            alert("Sesión expirada\n\nPor favor vuelve a iniciar sesión");
+                            $.mobile.changePage("login.html", {transition: "none", changeHash: false});
+                        }
+                    });
+                </script>
+            </section>            
+        </div>
+    </body>
+</html>

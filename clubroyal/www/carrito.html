@@ -38,13 +38,10 @@
                 <div style="visibility: hidden" id="redirect"></div>
                 <h1>Cat&aacute;logo</h1>
                 <img align="right" id="logohead" src="img/logohead.png">
-                <div data-role="navbar" data-iconpos="left" data-theme="c">
+                <div data-role="navbar" data-iconpos="left" data-theme="c" class="barracat">
                     <ul>
-                        <li style="width: 25%;overflow:hidden;" class="menu1Edgar">
-                            <a id="edgar1menu" class=" ui-btn-icon-left" data-icon="grid" href="#nav-panel" data-corners="false" data-shadow="false" data-iconshadow="true" data-inline="false" data-wrapperels="span" data-iconpos="bottom">Categor&iacute;as</a>
-                        </li>
-                        <li style="width: 50%;" class="menu2Edgar"><a href="#" style="cursor:default;">Aventura al aire libre</a></li>
-                        <li style="width: 25%;" class="menu3Edgar"><a href="home.html" style="cursor:default;">Regresar al Menú principal</a></li>
+                        <li style="width:40%;overflow:hidden"><a data-icon="grid" href="#nav-panel" id="categnom1" >Categor&iacute;as</a></li>
+                        <li style="width:60%"><a href="#" id="categoryname" style="cursor:default;overflow:hidden">Artículos de viaje</a></li>                        
                     </ul>
                 </div>
             </div>
@@ -83,21 +80,21 @@
                     </div>
                     <div style="clear: both"></div>
                 </div>
-                <br/>
-                <br/>
-                <br/>
-                <div data-role="navbar" data-iconpos="left" data-theme="a" >
-                    <ul>
-                        <li style="width: 50%;"><a href="home.html">Regresar al menú principal</a></li>
-                    </ul>
-                </div>
+             
+              
             </section>
-            <footer data-role="footer"  data-position="fixed">
+            <footer data-role="footer" data-position="fixed"  class="ui-fixed-hidden" >
+                <div data-role="navbar" id="menubajo">
+		<ul>
+			<li><a data-icon="grid" href="home.html"  data-iconpos="top">Menú principal</a></li>
+			<li><a data-icon="star" href="carrito.html" data-iconpos="top">Carrito de compras</a></li>
+		
+		</ul>
+	</div>
                 <div id="fot">
                     <img id="logofot1" src="img/adventa.png">     <img id="logofot2" src="img/adbox.png">   
-                    <p>D.R.<abbr lang="en" title="Copyright"> &COPY;</abbr>Copyright 2013.  Derechos Reservados.  Adventa y Adbox son marcas registradas de Publigraphics S.A. de C.V. 
-                        Quedan reservados todos los derechos de edici&oacute;n,  copia o reproducci&oacute;n parcial o total.
-                        T&eacute;rminos y condiciones de uso.  Aviso de Privacidad.</p></div>
+                    <p>D.R.<abbr lang="en" title="Copyright"> &COPY;</abbr>Copyright 2013.  Derechos Reservados. 
+                                               T&eacute;rminos y condiciones de uso.  Aviso de Privacidad.</p></div>
             </footer>
             <div data-role="panel" data-position-fixed="true" data-theme="a" id="nav-panel">
                 <ul data-role="listview" data-theme="a" class="nav-search" id="panelCategoria">
