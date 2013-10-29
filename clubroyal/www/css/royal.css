@@ -7,6 +7,9 @@
 */
 
 /* title bar */
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {padding-top:0px;padding-bottom: 0px;}
+    
+
 #felicidades{
     color: black;
 font-size:186%;
@@ -175,6 +178,9 @@ footer p{ font-size: 60%!important;
 
 }
 @media all and (max-width: 270px){
+   #h2prod{padding-left: 100px;}
+   #descpro{padding-top: .5em;
+padding-bottom: 1.5em;}
     
     .ui-btn-text{font-size: 1em}
 #felicidades{
@@ -282,6 +288,7 @@ font-size:129%;
     #orderNumber{
         font-size: 90%;
     }
+    
 }
 /* stack all grids below 40em (640px) */
 @media all and (max-width: 600px) {

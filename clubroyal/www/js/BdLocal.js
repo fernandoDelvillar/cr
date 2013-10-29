@@ -119,7 +119,7 @@ var productosSuccess = function(tx, results) {
         var html = '<div data-role="listview" data-inset="true" id="productos" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">';
         for (var i = 0; i < len; i++) {
             row = results.rows.item(i);
-            html += ' <div class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-first-child ui-last-child ui-btn-up-d"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a class="ui-link-inherit"  data-transition="slidedown" href="producto.html?id=' + row.id + '"><img  class="ui-li-thumb" src="' + row.imagen + '" /> <h2 class="ui-li-heading">Camp</h2></a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></div>';
+            html += ' <div id="descpro" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-first-child ui-last-child ui-btn-up-d"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a class="ui-link-inherit"  data-transition="slidedown" href="producto.html?id=' + row.id + '"><img  class="ui-li-thumb" src="' + row.imagen + '" /> <h2 id="h2prod" lass="ui-li-heading">Camp</h2></a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></div>';
          
             //<div class="ui-body ui-body-d">
         }
