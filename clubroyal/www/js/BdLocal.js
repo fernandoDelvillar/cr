@@ -116,15 +116,17 @@ var productosSuccess = function(tx, results) {
         var len = results.rows.length;
         var row;
 //        $('#productos').remove('div');
-        var html = '<div id="productos" class="ui-grid-c my-breakpoint">';
+        var html = '<div data-role="listview" data-inset="true" id="productos" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">';
         for (var i = 0; i < len; i++) {
             row = results.rows.item(i);
-            html += '<div class="ui-block-a"><a href="producto.html?id=' + row.id + '"><img src="' + row.imagen + '" /></a></div>';
+            html += ' <div class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-first-child ui-last-child ui-btn-up-d"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a class="ui-link-inherit"  data-transition="slidedown" href="producto.html?id=' + row.id + '"><img  class="ui-li-thumb" src="' + row.imagen + '" /> <h2 class="ui-li-heading">Camp</h2></a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></div>';
+         
             //<div class="ui-body ui-body-d">
         }
         html += '</div>';
         $('#productos').html(html);
         $('#productos').table("refresh");
+        $('#productos').ul("refresh");
         $('#categoryName').text(row.categoria);
     }
 };

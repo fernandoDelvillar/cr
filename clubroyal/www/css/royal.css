@@ -7,11 +7,20 @@
 */
 
 /* title bar */
+#felicidades{
+    color: black;
+font-size:186%;
+    font-weight: bold;
+
+    text-align: center;
+    padding: 0px 0px 100px 0px;
+    margin: 0px;
+}
 #cat1{width:50%; float:left;}
 #cat2{width:50%; float:right;}
 #categorias2{display:none;}
 
-.ui-li-heading{font-size:29px!important;}
+.ui-li-heading{font-size:120%;}
 .ui-li-desc{font-size:19px!important;}
 
 ui-body img{width:100%}
@@ -166,6 +175,14 @@ footer p{ font-size: 60%!important;
 
 }
 @media all and (max-width: 270px){
+    
+    .ui-btn-text{font-size: 1em}
+#felicidades{
+    color: darkblue;
+font-size:129%;
+  
+}
+    .ui-li-heading{font-size:80%;}
 	.ui-li-desc{display:none;}
 	ui-content{padding:0px;}
 	#home_option h1{display:none}
@@ -226,7 +243,7 @@ footer p{ font-size: 60%!important;
     }
  
     .ui-btn-text{
-        font-size: 1.5em;
+        font-size: 1em;
         white-space: initial;
     }
     .añadir{
@@ -251,9 +268,7 @@ footer p{ font-size: 60%!important;
     .menu3Edgar{
         display: none;
     }
-    #felicidades{
-        font-size: 1.3em;        
-    }
+  
     #orderNumber{
         font-size: 2em;
     }
@@ -264,6 +279,9 @@ footer p{ font-size: 60%!important;
 
 @media all and (max-width: 300px){
     #logohead{display:none;}
+    #orderNumber{
+        font-size: 90%;
+    }
 }
 /* stack all grids below 40em (640px) */
 @media all and (max-width: 600px) {
@@ -526,9 +544,9 @@ footer p{
 }
 #felicidades{
     color: black;
-    font-size: 40px;
+
     font-weight: bold;
-    width: 100%;
+
     text-align: center;
     padding: 0px 0px 100px 0px;
     margin: 0px;
