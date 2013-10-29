@@ -167,7 +167,8 @@ footer p{ font-size: 60%!important;
 
 }
 
-@media all and (max-width: 430px){
+
+@media all and (min-width: 271px) and (max-width: 430px) {
 
     #valor{width: 100%;}
     #logohead{height: 20px;
@@ -175,9 +176,32 @@ footer p{ font-size: 60%!important;
               right: 15px;
               top: 12px;}  
     .view-tenth{overflow: hidden; height: 7em; margin:1em;} 
+    .aliHomei img{width:80%}
+	.aliHomei {width:30%}
+        .ui-li-heading{font-size: 80%}
+        .ui-li-desc{font-size: 60%!important;}
 
 }
+@media all and (min-width: 271px) and (max-width: 360px) {
+
+    #valor{width: 100%;}
+    #logohead{height: 20px;
+              position: absolute;
+              right: 15px;
+              top: 12px;}  
+    .view-tenth{overflow: hidden; height: 7em; margin:1em;} 
+    .aliHomei img{width:80%}
+	.aliHomei {width:30%}
+        .ui-li-heading{font-size: 80%}
+        .ui-li-desc{font-size: 45%!important;}
+       
+      .ui-li-thumb{width: 20%}
+      imgcateg2{}
+   .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {padding-left: 3em;}
+#titprod{padding-left: 1em;}
+}
 @media all and (max-width: 270px){
+    #imgcate{display:none;}
    #h2prod{padding-left: 100px;}
    #descpro{padding-top: .5em;
 padding-bottom: 1.5em;}
