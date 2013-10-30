@@ -52,20 +52,35 @@
                         <span class="mini-bag item-count"><img src="img/joya.png" width="40" ></span>
                     </a>
                 </div>
+               
                 <br/>
-                <br/>
-                <h1 id="productName"></h1>
-                <div class="ui-grid-a my-breakpoint" id="producto">
-                    <div class="ui-block-a"><div class="ui-body ui-body-d" id="image"></div></div>
-                    <div class="ui-block-b"><div class="ui-body ui-body-d">
-                            <div id="valor">                                 
-                                <span style="line-height: 35px;color: darkmagenta;font-size: 1em;font-weight: bold;float: left;margin-right: 10px;">Valor:</span>  
-                                <span class="mini-bag item-count edgarMini" style="float: left !important"><img id="joyadesc" src="img/joya.png"  ></span>
-                                <span class="mini edgarPrecio" id="precio" ></span>
+                <br/> 
+                 <hr><h1 id="productName"></h1>
+                <div class="my-breakpoint" id="producto">
+                <div class="ui-body ui-body-d">    <div id="image"></div></div>
+                 <div class="ui-body ui-body-d">
+                            <div id="valor" style="background-color: rgb(238, 238, 238)">                                 
+                                <span id="vali" style="color: darkmagenta;font-size: 1em;font-weight: bold;float: left;margin-right: 10px;">Valor:</span>  
+                                <div id="222"> <span class="mini-bag item-count edgarMini" style="float: left !important"><img id="joyadesc" style="width: 52px;" src="img/joya.png"  ></span>
+                                    <span class="mini edgarPrecio" id="precio" style="float:left;"></span></div>
                                 <div style="clear: both"></div>
                             </div>
-                            <h2 id="sku"></h2>
-                            <p id="descripcion"></p>
+                    
+<div data-role="collapsible-set">
+
+	<div data-role="collapsible" data-collapsed="true">
+	<h3>Descripción</h3>
+        <h2 id="sku"></h2>
+                         		
+	<p><p id="descripcion"></p></p>
+             <div id="leyen">En caso que se agote la existencia de alguno de los productos, ser&aacute; sustituido por otro con caracter&iacute;sticas y valor similar.</div>                                     
+                      
+	</div>
+	
+	
+</div>
+	
+                            
                             <div data-mini="true" data-type="horizontal" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-horizontal ui-mini" aria-disabled="false" data-disabled="false" data-shadow="false" data-corners="true" data-exclude-invisible="true" data-init-selector=":jqmData(role='controlgroup')">
                                 <div class="ui-controlgroup-controls">
                                     <p style="margin: 0px;"><label class="quantity_box" for="quantity313">Cantidad:&nbsp;</label>
@@ -82,9 +97,8 @@
                         return false;" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-b"><span class="ui-btn-inner"><span class="ui-btn-text añadir">Eliminar</span><span class="ui-icon ui-icon-delete ui-icon-shadow">&nbsp;</span></span></a>
                                 </div></div>
                             <!--                            <div data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" id="confirmar"><span class="ui-btn-inner"><span class="ui-btn-text">Confirmar</span></span></div>-->
-                            <div data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" id="confirmar1"><span class="ui-btn-inner"><span class="ui-btn-text">Confirmar</span></span></div>
-                            <div id="leyen">En caso que se agote la existencia de alguno de los productos, ser&aacute; sustituido por otro con caracter&iacute;sticas y valor similar.</div>                                     
-                        </div>
+                            <div data-theme="b" data-role="button"  id="confirmar1">Confirmar</div>
+                         </div>
                     </div>
                 </div>
                 

@@ -7,9 +7,17 @@
 */
 
 /* title bar */
+.bodylogin{background-image: url(../img/bg_noise.png)!important;background: url(../img/bg_noise.png)!important;}
+.bodylogin body{background-image: url(../img/bg_noise.png)!important;background: url(../img/bg_noise.png)!important;}
+#leyendaCarrito,#orderNumber{
+    color: darkmagenta;
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+}
 .ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li {padding-top:0px;padding-bottom: 0px;}
-    
-
+#vali{line-height: 67px}
+#image img{width:100%}
 #felicidades{
     color: black;
 font-size:186%;
@@ -70,7 +78,7 @@ footer p{ font-size: 60%!important;
           text-align: center;
           
 }
-#valor{width: 40%;}
+#valor{width: 100%;padding-left: .5em;}
 #fot{padding:.5em;}
 
 #logofot1{float:left;}
@@ -78,7 +86,7 @@ footer p{ font-size: 60%!important;
 /*    .header a .ui-link span*/
 
 .mini-bag {
-    /*background: url(../img/sprite_layout.png) no-repeat scroll -127px 1px / 925px 32px transparent;*/
+/*    background: url(../img/sprite_layout.png) no-repeat scroll -127px 1px / 925px 32px transparent;*/
     color: #FFFFFF;
     display: block;
     float: right;
@@ -107,7 +115,7 @@ footer p{ font-size: 60%!important;
     float: right;
     font-size: 25px;
     height: 22px;
-    margin: 4px 100px 0 0;
+    margin: 8px 70px 0 0;
     padding: 11px 0 0 1px;
     text-shadow: none;
     width: 22px;
@@ -146,11 +154,11 @@ footer p{ font-size: 60%!important;
         width: 100%;
         float: left; }  
 
-    #valor{width: 80%;}
+    #valor{width: 100%;}
 }  
 
 @media all and (max-width: 799px){
-    #valor{width: 80%;}
+    #valor{width: 100%;}
     #navcat {
         width: 100%;
     }
@@ -169,6 +177,12 @@ footer p{ font-size: 60%!important;
 
 
 @media all and (min-width: 271px) and (max-width: 430px) {
+    #leyendaCarrito,#orderNumber{
+    color: darkmagenta;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+}
 
     #valor{width: 100%;}
     #logohead{height: 20px;
@@ -201,6 +215,8 @@ footer p{ font-size: 60%!important;
 #titprod{padding-left: 1em;}
 }
 @media all and (max-width: 270px){
+   
+ #vali{line-height:27px!important;}
     #imgcate{display:none;}
    #h2prod{padding-left: 100px;}
    #descpro{padding-top: .5em;
@@ -209,9 +225,7 @@ padding-bottom: 1.5em;}
     .ui-btn-text{font-size: 1em}
 #felicidades{
     color: darkblue;
-font-size:129%;
-  
-}
+font-size:129%;}
     .ui-li-heading{font-size:80%;}
 	.ui-li-desc{display:none;}
 	ui-content{padding:0px;}
@@ -258,7 +272,7 @@ font-size:129%;
     .edgarPrecio{
         color: darkmagenta;
         display: block;
-        font-size: 25px;
+        font-size: 19px;
         padding-top: 5px;
         text-shadow: none;
         margin: 0px !important;
@@ -300,7 +314,7 @@ font-size:129%;
     }
   
     #orderNumber{
-        font-size: 2em;
+        font-size: 20px;
     }
     #edgar1menu span{
         padding: 18px 2px 18px 18px;
@@ -557,12 +571,7 @@ footer p{
     }
 }
 
-#leyendaCarrito,#orderNumber{
-    color: darkmagenta;
-    font-size: 30px;
-    width: 100%;
-    text-align: center;
-}
+
 #orderNumber{
     color: darkmagenta;
     font-size: 60px;

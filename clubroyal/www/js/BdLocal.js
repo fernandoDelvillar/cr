@@ -189,8 +189,10 @@ var showCartSuccess = function(tx, results) {
             })).append($('<td/>', {}).append($('<div/>', {
                 'data-role': 'button',
                 'id': 'buttonelim',
+                'data-iconpos': 'right',
                 'data-corners': 'true',
                 'data-shadow': 'true',
+                 'data-icon':'delete',
                 'data-iconshadow': 'true',
                 'data-wrapperels': 'span',
                 'data-theme': 'b',
