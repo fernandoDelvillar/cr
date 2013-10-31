@@ -24,7 +24,7 @@ font-size:186%;
     font-weight: bold;
 
     text-align: center;
-    padding: 0px 0px 100px 0px;
+    padding: 0px 0px 50px 0px;
     margin: 0px;
 }
 #cat1{width:50%; float:left;}
@@ -574,7 +574,7 @@ footer p{
 
 #orderNumber{
     color: darkmagenta;
-    font-size: 60px;
+    font-size: 40px;
     font-weight: bold;
     width: 100%;
     text-align: center;
@@ -588,7 +588,7 @@ footer p{
     font-weight: bold;
 
     text-align: center;
-    padding: 0px 0px 100px 0px;
+    padding: 0px 0px 50px 0px;
     margin: 0px;
 }
 #total{
