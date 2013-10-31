@@ -215,12 +215,15 @@ footer p{ font-size: 60%!important;
 #titprod{padding-left: 1em;}
 }
 @media all and (max-width: 270px){
-   
+   .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit {
+min-height: 35px;}
+     .ui-li-has-thumb .ui-btn-inner a.ui-link-inherit img{
+width: 50px!important;}
  #vali{line-height:27px!important;}
     #imgcate{display:none;}
-   #h2prod{padding-left: 100px;}
+   #h2prod{padding-left: 56px;}
    #descpro{padding-top: .5em;
-padding-bottom: 1.5em;}
+padding-bottom:.5em;}
     
     .ui-btn-text{font-size: 1em}
 #felicidades{
