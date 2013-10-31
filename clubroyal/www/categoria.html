@@ -95,7 +95,7 @@
                         $("#disponibles").text(disponibles);
                     } else {
                         alert("Sesión expirada\n\nPor favor vuelve a iniciar sesión");
-                        $.mobile.changePage("login.html", {transition: "none", changeHash: false});
+                        window.location = 'main.html';
                     }
                 });
                 var getUrlVars = function() {

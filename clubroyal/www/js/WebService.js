@@ -80,6 +80,8 @@ var sendCanje = function(products, cliente, total) {
             if (response.exito) {
                 vaceaCarrito();
                 $.mobile.changePage("pedido.html?respuesta=" + response.pedido);
+            }else{
+                alert(response.msj);
             }
         } else {
             alert("no sucess");

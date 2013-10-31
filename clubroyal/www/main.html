@@ -83,10 +83,10 @@
                 $(document).on("pageinit", function() {
                     $.mobile.defaultPageTransition = "none";
                 });
-                document.addEventListener('deviceready', function() {
+//                document.addEventListener('deviceready', function() {
                     sesion.clear();
                     creaDB();
-                }, false);
+//                }, false);
                 $("#buttonLogin").on('click', function(event) {
                     event.preventDefault();
                     var user = $('#userID').val();

@@ -107,8 +107,8 @@
                         if (disponibles !== undefined) {
                             $("#disponibles").text(disponibles);
                         } else {
+                            window.location = 'main.html';
                             alert("Sesión expirada\n\nPor favor vuelve a iniciar sesión");
-                            $.mobile.changePage("login.html", {transition: "none", changeHash: false});
                         }
                     });
                 </script>

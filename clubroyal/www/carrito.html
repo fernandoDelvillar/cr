@@ -127,9 +127,9 @@
                     if (actuales !== undefined) {
                         var total = actuales - disponibles;
                         if (total > 0) {
-                            var cliente = "T301";
-                            var respuesta = sendCanje(getCartContent(), cliente, total);
-                            alert(respuesta);
+                            var cliente = "demo1";
+                            var rspsta = sendCanje(getCartContent(), cliente, total);
+//                            alert(JSON.stringify(rspsta));
                         } else {
                             alert("Tu carrito de compras está vacio \nFavor de agregar productos");
                         }
