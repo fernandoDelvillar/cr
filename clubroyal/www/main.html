@@ -84,19 +84,22 @@
                     $.mobile.defaultPageTransition = "none";
                 });
 //                document.addEventListener('deviceready', function() {
-                    sesion.clear();
-                    creaDB();
+                sesion.clear();
+                creaDB();
 //                }, false);
                 $("#buttonLogin").on('click', function(event) {
                     event.preventDefault();
                     var user = $('#userID').val();
                     var pass = $('#pass').val();
-//                    if (user !== '' && pass !== '') {
-////                        pass=Base64.encode(Base64.encode(Base64.encode(pass)));
-////						alert(pass);
-//                        
-//                    }
-                    canlogin(user, pass);
+                    if (user !== '' && pass !== '') {
+                        pass1 = Base64.encode(pass);
+                        pass2 = Base64.encode(pass1);
+                        pass3 = Base64.encode(pass2);
+                        alert(pass3);
+                        canlogin(user, pass3);
+                    }else{
+                        alert("Debe de teclear un usuario y/o contraseña")
+                    }
                 });
             </script>
         </div>
