@@ -1,5 +1,5 @@
 var wsUrl = "http://adventasoluciones.com.mx/detallistas/public/wsdl/index/soap";
-//var wsUrl = "http://localhost/adccmdev/public/wsdl/index/soap";
+var wsUrl = "http://localhost/adccmdev/public/wsdl/index/soap";
 //var wsUrl = "http://orios.localhost/projects/adccmdev/public/wsdl/index/soap";
 $.mobile.allowCrossDomainPages = true;
 $.support.cors = true;
@@ -38,16 +38,19 @@ var canlogin = function(username, pass) {
                 alert("No se puede iniciar sesión\nUsuario y/o contraseña incorrectos\n\nFavor de verificarlos");
                 sesion.clear();
             }
-            $(".ui-loader").css("display", "none");
         } else {
-            alert("No se pudo establecer la conexión con el servidor");
             sesion.clear();
+            $.mobile.changePage("main.html");
+            alert("No se pudo establecer la conexión con el servidor");
         }
+        $(".ui-loader").css("display", "none");
     }
 
     function processError(data, status, req) {
         sesion.clear();
+        $.mobile.changePage("main.html");
         alert("No se pudo establecer la conexión con el servidor");
+        $(".ui-loader").css("display", "none");
     }
 
     function showLoading() {
@@ -82,22 +85,20 @@ var sendCanje = function(products, cliente, total) {
             if (response.exito) {
                 vaceaCarrito();
                 $.mobile.changePage("pedido.html?respuesta=" + response.pedido);
-            } else {
-                alert(response.msj);
             }
-            $(".ui-loader").css("display", "none");
         } else {
-            alert("no sucess");
+            sesion.clear();
+            $.mobile.changePage("main.html");
+            alert("No se pudo establecer la conexión con el servidor");
         }
+        $(".ui-loader").css("display", "none");
         return [];
     }
 
     function processError(data, status, req) {
-        $.each(data, function(k, v) {
-            alert(k + ':' + v);
-        });
-        alert(req);
-        alert(status);
+        alert("No se pudo establecer la conexión con el servidor");
+        sesion.clear();
+        $.mobile.changePage("main.html");
         alert("No se pudo establecer la conexión con el servidor");
     }
 

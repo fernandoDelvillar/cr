@@ -36,7 +36,7 @@
 
         <title>Club Royal</title>
     </head>
-    <body class="bodylogin" style="background-image: url(img/bg_noise.png)!important;background: url(img/bg_noise.png)!important;">
+    <body class="bodylogin" style="background-image: url(img/bg_noise.png)!important;background: url(img/bg_noise.png)!important;" id="login">
         <div data-role="page"  data-theme="b" class="scrollable" style="background-image: url(img/bg_noise.png)!important;">
             <header data-role="header" style="background:none;border: none;">
                 <center><img id="logo" src="img/logo.png"></center>
@@ -83,10 +83,10 @@
                 $(document).on("pageinit", function() {
                     $.mobile.defaultPageTransition = "none";
                 });
-//                document.addEventListener('deviceready', function() {
-                sesion.clear();
-                creaDB();
-//                }, false);
+                document.addEventListener('deviceready', function() {
+                    sesion.clear();
+                    creaDB();
+                }, false);
                 $("#buttonLogin").on('click', function(event) {
                     event.preventDefault();
                     var user = $('#userID').val();
@@ -97,7 +97,7 @@
                         var pass3 = Base64.encode(pass2);
                         canlogin(user, pass3);
                         $.mobile.changePage("loading.html");
-                    }else{
+                    } else {
                         alert("Debe de teclear un usuario y/o contraseña")
                     }
                 });
