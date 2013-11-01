@@ -67,7 +67,7 @@
                             </tr>                        
                         </thead>
                         <tbody id="edgartable">            
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -80,21 +80,21 @@
                     </div>
                     <div style="clear: both"></div>
                 </div>
-             
-              
+
+
             </section>
             <footer data-role="footer" data-position="fixed"  class="ui-fixed-hidden" >
                 <div data-role="navbar" id="menubajo">
-		<ul>
-			<li><a data-icon="grid" href="home.html"  data-iconpos="top">Menú principal</a></li>
-			<li><a data-icon="star" href="carrito.html" data-iconpos="top">Carrito de compras</a></li>
-		
-		</ul>
-	</div>
+                    <ul>
+                        <li><a data-icon="grid" href="home.html"  data-iconpos="top">Menú principal</a></li>
+                        <li><a data-icon="star" href="carrito.html" data-iconpos="top">Carrito de compras</a></li>
+
+                    </ul>
+                </div>
                 <div id="fot">
                     <img id="logofot1" src="img/adventa.png">     <img id="logofot2" src="img/adbox.png">   
                     <p>D.R.<abbr lang="en" title="Copyright"> &COPY;</abbr>Copyright 2013.  Derechos Reservados. 
-                                               T&eacute;rminos y condiciones de uso.  Aviso de Privacidad.</p></div>
+                        T&eacute;rminos y condiciones de uso.  Aviso de Privacidad.</p></div>
             </footer>
             <div data-role="panel" data-position-fixed="true" data-theme="a" id="nav-panel">
                 <ul data-role="listview" data-theme="a" class="nav-search" id="panelCategoria">
@@ -127,16 +127,20 @@
                     if (actuales !== undefined) {
                         var total = actuales - disponibles;
                         if (total > 0) {
-                            var cliente = "demo1";
-                            $.mobile.changePage("loading.html");
-                            var rspsta = sendCanje(getCartContent(), cliente, total);
-//                            alert(JSON.stringify(rspsta));
+                            var cliente = sesion.get('info').numerocliente;
+                            if (null !== cliente) {
+                                $.mobile.changePage("loading.html");
+                                var rspsta = sendCanje(getCartContent(), cliente, total);
+                            } else {
+                                alert("Sesión expirada\nFavor de volver a ingresar");
+                                $.mobile.changePage("main.html", {});
+                            }
                         } else {
                             alert("Tu carrito de compras está vacio \nFavor de agregar productos");
                         }
                     } else {
                         alert("Sesión expirada\nFavor de volver a ingresar");
-                        $.mobile.changePage("login.html", {});
+                        $.mobile.changePage("main.html", {});
                     }
                 });
             </script>
