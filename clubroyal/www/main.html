@@ -92,14 +92,11 @@
                     var user = $('#userID').val();
                     var pass = $('#pass').val();
                     if (user !== '' && pass !== '') {
-                        alert("pass\n"+pass);
                         var pass1 = Base64.encode(pass);
-                        alert("pass1\n"+pass1);
                         var pass2 = Base64.encode(pass1);
-                        alert("pass2\n"+pass2);
                         var pass3 = Base64.encode(pass2);
-                        alert("pass3\n"+pass3);
                         canlogin(user, pass3);
+                        $.mobile.changePage("loading.html");
                     }else{
                         alert("Debe de teclear un usuario y/o contraseña")
                     }

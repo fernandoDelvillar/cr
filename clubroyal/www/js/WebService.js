@@ -1,5 +1,5 @@
 var wsUrl = "http://adventasoluciones.com.mx/detallistas/public/wsdl/index/soap";
-//var wsUrl = "http://localhost/adccmdev/public/wsdl/index/soap";
+var wsUrl = "http://localhost/adccmdev/public/wsdl/index/soap";
 //var wsUrl = "http://orios.localhost/projects/adccmdev/public/wsdl/index/soap";
 $.mobile.allowCrossDomainPages = true;
 $.support.cors = true;
@@ -34,9 +34,11 @@ var canlogin = function(username, pass) {
                 sesion.sets("puntos", puntos);
                 $.mobile.changePage("home.html");
             } else {
+                $.mobile.changePage("main.html");
                 alert("No se puede iniciar sesión\nUsuario y/o contraseña incorrectos\n\nFavor de verificarlos");
                 sesion.clear();
             }
+            $(".ui-loader").css("display", "none");
         } else {
             alert("No se pudo establecer la conexión con el servidor");
             sesion.clear();
@@ -83,6 +85,7 @@ var sendCanje = function(products, cliente, total) {
             } else {
                 alert(response.msj);
             }
+            $(".ui-loader").css("display", "none");
         } else {
             alert("no sucess");
         }
