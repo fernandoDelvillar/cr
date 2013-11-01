@@ -27,6 +27,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener("backbutton", this.handleBackButton, true);
     },
     // deviceready Event Handler
     //
@@ -35,7 +36,41 @@ var app = {
     onDeviceReady: function() {
         sesion.clear();
         creaDB();
+    },
+    handleBackButton: function() {
+        switch ($.mobile.activePage.attr('id')) {
+            case 'home':
+                $.mobile.changePage('main.html');
+                break;
+            case 'login':
+                navigator.app.exitApp();
+                break;
+            case 'listadopedidos':
+            case 'estadocuenta':
+            case 'catalogo':
+                $.mobile.changePage('home.html');
+                break;
+            case 'categoria':
+                $.mobile.changePage('catalogo.html');
+                break;
+            case 'productoInfo':
+                $.mobile.changePage('categoria.html');
+                break;
+            case 'carrito':
+                $.mobile.changePage('catalogo.html');
+                break;
+            case 'pedidoInfo':
+                $.mobile.changePage('home.html');
+                break;
+            case 'pedidoInfo':
+                $.mobile.changePage('home.html');
+                break;
+            default :
+                navigator.app.backHistory();
+        }
     }
+
+
 };
 /*$("#signin").bind("click", function(event) {
  canlogin();

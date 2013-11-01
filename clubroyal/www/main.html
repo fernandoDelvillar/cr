@@ -102,21 +102,6 @@
                     }
                 });
 
-                function onDeviceReady() {
-                    document.addEventListener("backbutton", handleBackButton, true);
-                }
-                function handleBackButton() {
-                    alert($.mobile.activePage.attr('id'));
-//                    if ($.mobile.activePage.attr('id') == 'home'
-//                            || $.mobile.activePage.attr('id') == 'listaUsuarios') {
-//                        navigator.app.exitApp();
-//                    } else if ($.mobile.activePage.attr('id') == 'cita') {
-//                        $.mobile.changePage('#listaUsuarios');
-//                    } else {
-//                        navigator.app.backHistory();
-//                    }
-                }
-                document.addEventListener("deviceready", onDeviceReady, false);
             </script>
         </div>
     </body>
