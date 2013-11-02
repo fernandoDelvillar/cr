@@ -79,7 +79,6 @@
             <script type="text/javascript" src="js/BdLocal.js"></script>            
             <script type="text/javascript" src="js/Base64.js"></script>            
             <script type="text/javascript">
-                app.initialize();
                 $(document).on("pageinit", function() {
                     $.mobile.defaultPageTransition = "none";
                 });
@@ -98,10 +97,52 @@
                         canlogin(user, pass3);
                         $.mobile.changePage("loading.html");
                     } else {
-                        alert("Debe de teclear un usuario y/o contraseña")
+                        alert("Debe de teclear un usuario y/o contraseña");
                     }
                 });
 
+                function onDeviceReady() {
+                    document.addEventListener("backbutton", handleBackButton, true);
+                }
+                function handleBackButton() {
+                    alert($.mobile.activePage.attr('id'));
+                    switch ($.mobile.activePage.attr('id')) {
+                        case 'home':
+                            alert("nos vamos a main");
+                            $.mobile.changePage('main.html');
+                            break;
+                        case 'login':
+                            alert("nos vamos a salir");
+                            navigator.app.exitApp();
+                            break;
+                        case 'listadopedidos':
+                        case 'estadocuenta':
+                        case 'catalogo':
+                            alert("nos vamos a home");
+                            $.mobile.changePage('home.html');
+                            break;
+                        case 'categoria':
+                            alert("nos vamos a catalogo");
+                            $.mobile.changePage('catalogo.html');
+                            break;
+                        case 'productoInfo':
+                            alert("nos vamos a categoria");
+                            $.mobile.changePage('categoria.html');
+                            break;
+                        case 'carrito':
+                            alert("nos vamos a catalogo");
+                            $.mobile.changePage('catalogo.html');
+                            break;
+                        case 'pedidoInfo':
+                            alert("nos vamos a home");
+                            $.mobile.changePage('home.html');
+                            break;
+                        default :
+                            alert("nos vamos a back");
+                            navigator.app.backHistory();
+                    }
+                }
+                document.addEventListener("deviceready", onDeviceReady, false);
             </script>
         </div>
     </body>
