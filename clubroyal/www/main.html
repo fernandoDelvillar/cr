@@ -105,12 +105,11 @@
                     document.addEventListener("backbutton", handleBackButton, true);
                 }
                 function handleBackButton() {
-                    alert($.mobile.activePage.attr('id'));
                     switch ($.mobile.activePage.attr('id')) {
                         case 'home':                            
                             $.mobile.changePage('main.html');
                             break;
-                        case 'undefined':
+                        case undefined:
                         case 'login':
                             navigator.app.exitApp();
                             break;
