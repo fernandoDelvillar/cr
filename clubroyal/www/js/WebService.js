@@ -1,5 +1,5 @@
 var wsUrl = "http://adventasoluciones.com.mx/detallistas/public/wsdl/index/soap";
-//var wsUrl = "http://localhost/adccmdev/public/wsdl/index/soap";
+//var wsUrl = "http://davichos.com/adccmdev/public/wsdl/index/soap";
 //var wsUrl = "http://orios.localhost/projects/adccmdev/public/wsdl/index/soap";
 $.mobile.allowCrossDomainPages = true;
 $.support.cors = true;
@@ -83,6 +83,9 @@ var sendCanje = function(products, cliente, total) {
         if (status === "success") {
             var response = JSON.parse($(req.responseXML).find("return").text());
             if (response.exito) {
+                var puntos = sesion.get("puntos");
+                puntos.actuales = puntos.disponibles;
+                sesion.sets("puntos", puntos);
                 vaceaCarrito();
                 $.mobile.changePage("pedido.html?respuesta=" + response.pedido);
             }

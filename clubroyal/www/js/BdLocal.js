@@ -167,7 +167,7 @@ var showCartSuccess = function(tx, results) {
     if (results.rows !== undefined) {
         var len = results.rows.length;
         var total = 0;
-        $('#tableContent tr').remove();
+        $('#edgartable tr').remove();
         for (var i = 0; i < len; i++) {
             var row = results.rows.item(i);
             var importe = row.precio * row.cantidad;
@@ -215,7 +215,6 @@ var showCartSuccess = function(tx, results) {
         sesion.sets("puntos", puntos);
         $('#disponibles').text(dispobibles);
     }
-    ;
 };
 var dropproduct = function(idproducto) {
     db.transaction(function(tx) {
@@ -228,6 +227,7 @@ var vaceaCarrito = function() {
     db.transaction(function(tx) {
         tx.executeSql('DELETE FROM CARRITO WHERE 1', [], function(tx, result) {
         }, errorSql);
+        
     }, errorSql);
 };
 var getCartContent = function() {
