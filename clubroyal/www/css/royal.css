@@ -10,7 +10,7 @@
 .bodylogin{background-image: url(../img/bg_noise.png)!important;background: url(../img/bg_noise.png)!important;}
 .bodylogin body{background-image: url(../img/bg_noise.png)!important;background: url(../img/bg_noise.png)!important;}
 #leyendaCarrito,#orderNumber{
-    color: darkmagenta;
+    color: #006699;
     font-size: 30px;
     width: 100%;
     text-align: center;
@@ -57,7 +57,7 @@ body {
           right: 15px;
           top: 7px;}
 
-#leyen{color: darkmagenta;
+#leyen{color: #006699;
        margin: .3em;
        font-size: 75%;
 }
@@ -111,7 +111,7 @@ footer p{ font-size: 60%!important;
 }
 
 .mini {
-    color: darkmagenta;
+    color: #006699;
     display: block;
     float: right;
     font-size: 25px;
@@ -122,7 +122,7 @@ footer p{ font-size: 60%!important;
     width: 22px;
 }
 .mini2 {
-    color: darkmagenta;
+    color: #006699;
     display: block;
     float: left;
     font-size: 19px;
@@ -179,7 +179,7 @@ footer p{ font-size: 60%!important;
 
 @media all and (min-width: 271px) and (max-width: 430px) {
     #leyendaCarrito,#orderNumber{
-        color: darkmagenta;
+        color: #006699;
         font-size: 20px;
         width: 100%;
         text-align: center;
@@ -274,7 +274,7 @@ footer p{ font-size: 60%!important;
         padding: 0px !important;
     }
     .edgarPrecio{
-        color: darkmagenta;
+        color: #006699;
         display: block;
         font-size: 19px;
         padding-top: 5px;
@@ -386,7 +386,7 @@ body {
     top: 7px;}
 
 #leyen{
-    color: darkmagenta;
+    color: #006699;
     margin: .3em;
     font-size: 75%;
 }
@@ -437,7 +437,7 @@ footer p{
     width: 22px;
 }
 .mini {
-    color: darkmagenta;
+    color: #006699;
     display: block;
     float: right;
     font-size: 19px;
@@ -448,7 +448,7 @@ footer p{
     width: 20%;
 }
 .mini2 {
-    color: darkmagenta;
+    color: #006699;
     display: block;
     float: left;
     font-size: 19px;
@@ -576,7 +576,7 @@ footer p{
 
 
 #orderNumber{
-    color: darkmagenta;
+    color: #006699;
     font-size: 40px;
     font-weight: bold;
     width: 100%;
@@ -595,7 +595,7 @@ footer p{
     margin: 0px;
 }
 #total{
-    color: darkmagenta;
+    color: #006699;
     font-size: 170%;
     width: 100%;
     text-align: right;

@@ -92,7 +92,7 @@ var creaTablaProductos = function(tx) {
 //    });
 };
 var creaTablaCarrito = function(tx) {
-    alert("carrito");
+//    alert("carrito");
     tx.executeSql('DROP TABLE IF EXISTS CARRITO');
     tx.executeSql('CREATE TABLE IF NOT EXISTS CARRITO("id" INTEGER PRIMARY KEY,"id_producto" INTEGER,"cantidad" INTEGER)');
 };

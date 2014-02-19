@@ -84,8 +84,9 @@
                 });
                 document.addEventListener('deviceready', function() {
                     sesion.clear();
-                    creaDB();
+                    
                 }, false);
+                creaDB();
                 $("#buttonLogin").on('click', function(event) {
                     event.preventDefault();
                     var user = $('#userID').val();
