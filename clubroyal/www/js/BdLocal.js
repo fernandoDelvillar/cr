@@ -12,7 +12,7 @@ var creaTablas = function(tx) {
 var creaTablaCategorias = function(tx) {
     tx.executeSql('DROP TABLE IF EXISTS CATEGORIAS');
     tx.executeSql('CREATE TABLE IF NOT EXISTS CATEGORIAS("id" INTEGER PRIMARY KEY,"nombre" CHAR(20) NOT NULL, "imagen" TEXT NOT NULL,  "estatus" INTEGER NOT NULL)');
-    tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(22,"Para Ella","img/resized/ALLY-29-10-289_100x100.jpg",1)');
+   /* tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(22,"Para Ella","img/resized/ALLY-29-10-289_100x100.jpg",1)');
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(21,"Para Él","img/resized/ALLY-04-01-017_100x100.jpg",1)');
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(20,"Niños y bebés","img/resized/ALLY-03-06-010_100x100.jpg",1)');
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(19,"Línea Blanca","img/resized/ALLY-19-02-928.jpg",1)');
@@ -25,13 +25,13 @@ var creaTablaCategorias = function(tx) {
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(24,"Tecnología","img/resized/ALLY-90-05-941_100x100.jpg",1)');
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(25,"Especial","img/resized/ALLY-90-05-941_100x100.jpg",1)');
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(26,"Entrega Anticipada","img/resized/ALLY-90-05-941_100x100.jpg",1)');
-
+	*/
 };
 var creaTablaProductos = function(tx) {
 //    db.transaction(function(tx) {
     tx.executeSql('DROP TABLE IF EXISTS PRODUCTOS');
     tx.executeSql('CREATE TABLE IF NOT EXISTS PRODUCTOS("id" INTEGER PRIMARY KEY,"id_categoria" INTEGER,"nombre" CHAR(20) NOT NULL, "descripcion" LONGTEXT NOT NULL,"sku" CHAR(15) NOT NULL, "precio" INTEGER, "imagen" TEXT NOT NULL, "estatus" INTEGER NOT NULL)');
-tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (473,19,"Plancha Black and Decker","Plancha con base de acero inoxidable  vapor extra  chorro de vapor concentrado y spray.","ALLY2-37-13",972,"img/new/ally23713.jpg","1")');
+/*tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (473,19,"Plancha Black and Decker","Plancha con base de acero inoxidable  vapor extra  chorro de vapor concentrado y spray.","ALLY2-37-13",972,"img/new/ally23713.jpg","1")');
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (635,20,"Vaso antigoteo SPORT 12 OZ 18 MAVENT","Recomendado para ni@os de 18 meses en adelante. Antigoteo F@cil de limpiarEl vaso entero puede esterilizarse para mayor higiene","ALLY2-208-13",1028,"img/new/ally220813.jpg","1")');
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (450,22,"Juego anillo y aretes mujer","Juego de anillo y aretes en oro rosa de 14K con brillantes 64D .32.","ALLY2-14-13",89452,"img/new/ally21413.jpg","1")');
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (476,19,"Ventilador Taurus Air Black","Ventilador de piso de 56cm de 3 velocidades. Potente motor.","ALLY2-40-13",2170,"img/new/ally24013.jpg","1")');
@@ -311,7 +311,7 @@ tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,prec
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (848,26,"CAMARA WEB","WEBCAM LIFECAM HD-3000 HD 720P","ALLY2-270-13-EA",2679,"img/new/ally227013.jpg","1")');
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (849,26,"VIDEO CAMARA RCA EZ1320 NEGRO","Pantalla LCD de 1.4 HD 720p grabaci@n en formato AVI MPEG Toma fotogr@fica fija hasta 5 megapixeles Memoria interna de 256MB Ranura de tarjeta SD expandible a 32GB Zoom digital 4X para foto y video Funci@n de WEB CAM para PC 6 Efectos de video luz LED Salida de audio y video Utiliza 3 bater@as tipo AAA Garant@a: 1 A@O","ALLY2-274-13-EA",4847,"img/new/ally227413.jpg","1")');
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (850,26,"MINICOMP. SAMSUNG MOD.MXF630","Minicomponente Samsung con 160W de potencia  funci@n REC para grabar canciones directamente en una memoria USB conectada en su puerto y entrada auxiliar. Adem@s  tiene la funci@n Karaoke para conectar micr@fonos y divertirte con tus amigos.","ALLY2-275-14-EA",11720,"minicomp_samsun_52e7f2f82da19.jpg","1")');
-
+	*/
 //    }, function(error) {
 //        console.log(error)
 //        alert("error");
