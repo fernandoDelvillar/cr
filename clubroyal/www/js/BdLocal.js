@@ -329,7 +329,7 @@ var errorSql = function(error) {
 //    alert("No se puede inicializar la App");
     console.log(error);
     if (error.code == error.DATABASE_ERR)
-        alert('nasty database error');
+        alert(error);
 };
 var creaDBSuccess = function() {
     return true;
