@@ -12,7 +12,7 @@ var creaTablas = function(tx) {
 var creaTablaCategorias = function(tx) {
     tx.executeSql('DROP TABLE IF EXISTS CATEGORIAS');
     tx.executeSql('CREATE TABLE IF NOT EXISTS CATEGORIAS("id" INTEGER PRIMARY KEY,"nombre" CHAR(20) NOT NULL, "imagen" TEXT NOT NULL,  "estatus" INTEGER NOT NULL)');
-   /* tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(22,"Para Ella","img/resized/ALLY-29-10-289_100x100.jpg",1)');
+    tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(22,"Para Ella","img/resized/ALLY-29-10-289_100x100.jpg",1)');
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(21,"Para Él","img/resized/ALLY-04-01-017_100x100.jpg",1)');
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(20,"Niños y bebés","img/resized/ALLY-03-06-010_100x100.jpg",1)');
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(19,"Línea Blanca","img/resized/ALLY-19-02-928.jpg",1)');
@@ -25,7 +25,7 @@ var creaTablaCategorias = function(tx) {
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(24,"Tecnología","img/resized/ALLY-90-05-941_100x100.jpg",1)');
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(25,"Especial","img/resized/ALLY-90-05-941_100x100.jpg",1)');
     tx.executeSql('INSERT INTO CATEGORIAS ("id","nombre","imagen","estatus") VALUES(26,"Entrega Anticipada","img/resized/ALLY-90-05-941_100x100.jpg",1)');
-	*/
+	
 };
 var creaTablaProductos = function(tx) {
 //    db.transaction(function(tx) {
