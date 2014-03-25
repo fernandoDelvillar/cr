@@ -132,7 +132,7 @@ var creaTablaProductos = function(tx) {
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (517,15,"Termo Acero Inoxidable Wenger","Termo de acero inoxidable de rosca de pl@stico. Capacidad de 26 oz.","ALLY2-82-13",1084,"img/new/ally28213.jpg","1")');
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (540,21,"Porta tarjetas Luxembourg","Tarjetero cromado","ALLY2-107-13",575,"img/new/ally210713.jpg","1")');
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (575,18,"Estancia con encanto","2 personas. Elige entre m@s de 75 hoteles de 3-4*  una noche con desayuno y cena en la Zona Metropolitana de la Ciudad de M@xico  Colima  Guanajuato  Guerreo  Hidalgo  Michoac@n  Morelos  Puebla  Quer@taro  Veracruz  Jalisco y Nuevo Le@n.","ALLY2-142-13",8480,"img/new/ally214213.jpg","1")');
-/*	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (655,14,"Organizador de Cajuela","Ideal para mantener el carro o camioneta organizada  incluye hielera 1 six para mantener las bebidas fr@as en viajes.","ALLY228--13",3393,"img/new/ally22813.jpg","1")');
+	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (655,14,"Organizador de Cajuela","Ideal para mantener el carro o camioneta organizada  incluye hielera 1 six para mantener las bebidas fr@as en viajes.","ALLY228--13",3393,"img/new/ally22813.jpg","1")');
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (569,18,"Aventura","1 o 2 personas. Elige entre m@s de 100 actividades para 1 o 2 personas en DF  Hidalgo  Mich  Morelos  Pue  Gro  Qro  Tlax y Ver (bungy  golf  clases de surf  tubbing  esgrima  gotcha  etc).","ALLY2-136-13",2989,"img/new/ally213613.jpg","1")');
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (565,22,"Reloj con correa blanca de silic@n integrada.","Reloj de pulso con correa blanca de silic@n  movimiento japon@s de alta precisi@n  bisel rotatorio y cristal mineralizado. Incluye estuche de metal en color plata mate. Resiste 3 ATM.","ALLY2-132-13",3316,"img/new/ally213213.jpg","1")');
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (442,20,"Scooter ni@a","Scooter rodada 16 1 velocidad; tijera r@gida; freno trasero V brake","ALLY2-6-13",6453,"img/new/ally2613.jpg","1")');
@@ -311,7 +311,7 @@ var creaTablaProductos = function(tx) {
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (848,26,"CAMARA WEB","WEBCAM LIFECAM HD-3000 HD 720P","ALLY2-270-13-EA",2679,"img/new/ally227013.jpg","1")');
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (849,26,"VIDEO CAMARA RCA EZ1320 NEGRO","Pantalla LCD de 1.4 HD 720p grabaci@n en formato AVI MPEG Toma fotogr@fica fija hasta 5 megapixeles Memoria interna de 256MB Ranura de tarjeta SD expandible a 32GB Zoom digital 4X para foto y video Funci@n de WEB CAM para PC 6 Efectos de video luz LED Salida de audio y video Utiliza 3 bater@as tipo AAA Garant@a: 1 A@O","ALLY2-274-13-EA",4847,"img/new/ally227413.jpg","1")');
 	tx.executeSql('INSERT INTO PRODUCTOS(id,id_categoria,nombre,descripcion,sku,precio,imagen,estatus) VALUES (850,26,"MINICOMP. SAMSUNG MOD.MXF630","Minicomponente Samsung con 160W de potencia  funci@n REC para grabar canciones directamente en una memoria USB conectada en su puerto y entrada auxiliar. Adem@s  tiene la funci@n Karaoke para conectar micr@fonos y divertirte con tus amigos.","ALLY2-275-14-EA",11720,"minicomp_samsun_52e7f2f82da19.jpg","1")');
-*/
+//135
 //    }, function(error) {
 //        console.log(error)
 //        alert("error");
@@ -329,7 +329,7 @@ var errorSql = function(error) {
 //    alert("No se puede inicializar la App");
     console.log(error);
     if (error.code == error.DATABASE_ERR)
-        alert('error.code:'+error.code+'error message: '+error.message+' error '+error );
+        alert('error.code:'+error.code+'error message: '+error.message+' error '+JSON.stringify(error) );
 };
 var creaDBSuccess = function() {
     return true;
